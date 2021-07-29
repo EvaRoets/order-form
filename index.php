@@ -28,7 +28,20 @@ function whatIsHappening() {
 
 // TODO: provide some products (you may overwrite the example)
 $products = [
-    ['goldfishwalker' => 'Your favourite drink', 'price' => 2.5],
+    ["name" => 'Your favourite drink', 'price' => 2.5],
+//Goldfish Walker
+//Shoe Umbrella
+//Wine Glass Holder Necklace
+//Diet Water
+//Gas Powered Flashlight
+
+// Time
+// Manners
+// Sunny Days
+// Purpose of Life
+// Inner Peace
+// Wisdom
+
 ];
 
 $totalValue = 0;
@@ -58,13 +71,11 @@ if ($formSubmitted) {
     handleForm();
 }
 
-$from_view = require 'form-view.php';
+$from_view = require 'form-view.php'; // includes and evaluates the specified file
 echo $from_view;
 
 
 //PREPARATION
-//TODO how are index.php and form-view.php working together?
-//TODO think of funny / surprising / original name for a store
 //TODO update array with products to sell
 //TODO Check visibility all products & prices
 
