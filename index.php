@@ -15,33 +15,27 @@ error_reporting(E_ALL);
 session_start();
 
 // Use this function when you need to need an overview of these variables
-function whatIsHappening() {
+function whatIsHappening()
+{
+    var_dump("<pre>");
     echo '<h2>$_GET</h2>';
-    "<pre>", var_dump($_GET), "</pre>";
+    var_dump($_GET);
     echo '<h2>$_POST</h2>';
-    "<pre>", var_dump($_POST), "</pre>";
+    var_dump($_POST);
     echo '<h2>$_COOKIE</h2>';
-    "<pre>", var_dump($_COOKIE), "</pre>";
+    var_dump($_COOKIE);
     echo '<h2>$_SESSION</h2>';
-    "<pre>", var_dump($_SESSION), "</pre>";
+    var_dump($_SESSION);
+    var_dump("</pre>");
+
 }
 
 // TODO: provide some products (you may overwrite the example)
 $products = [
-    ["name" => 'Your favourite drink', 'price' => 2.5],
-//Goldfish Walker
-//Shoe Umbrella
-//Wine Glass Holder Necklace
-//Diet Water
-//Gas Powered Flashlight
-
-// Time
-// Manners
-// Sunny Days
-// Purpose of Life
-// Inner Peace
-// Wisdom
-
+    ["name" => 'Goldfish Walker', 'price' => 34.99],
+    ["name" => 'Shoe Umbrella', 'price' => 8.95],
+    ["name" => 'Diet Water', 'price' => 1.8],
+    ["name" => 'Gas Powered Flashlight', 'price' => 14.5],
 ];
 
 $totalValue = 0;
@@ -100,6 +94,14 @@ echo $from_view;
 //TODO Read about get_variables and what you can do with it.
 //TODO Find commented navigation and activate it. Tweak the content for your own store
 //TODO Make a second category of products in a new array
+
+// Time
+// Manners
+// Sunny Days
+// Purpose of Life
+// Inner Peace
+// Wisdom
+
 //TODO make navigation toggle between the two product categories
 
 //Nice-to-have features
