@@ -17,13 +17,13 @@ session_start();
 // Use this function when you need to need an overview of these variables
 function whatIsHappening() {
     echo '<h2>$_GET</h2>';
-    var_dump($_GET);
+    "<pre>", var_dump($_GET), "</pre>";
     echo '<h2>$_POST</h2>';
-    var_dump($_POST);
+    "<pre>", var_dump($_POST), "</pre>";
     echo '<h2>$_COOKIE</h2>';
-    var_dump($_COOKIE);
+    "<pre>", var_dump($_COOKIE), "</pre>";
     echo '<h2>$_SESSION</h2>';
-    var_dump($_SESSION);
+    "<pre>", var_dump($_SESSION), "</pre>";
 }
 
 // TODO: provide some products (you may overwrite the example)
@@ -58,7 +58,9 @@ if ($formSubmitted) {
     handleForm();
 }
 
-require 'form-view.php';
+$from_view = require 'form-view.php';
+echo $from_view;
+
 
 //PREPARATION
 //TODO how are index.php and form-view.php working together?
