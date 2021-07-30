@@ -67,20 +67,32 @@ function validate()
     if (!is_numeric($_POST["zipcode"])) {
         array_push($invalidFields, "zipcodeInvalid");
     }
-
     return $invalidFields;
 }
-
 
 function handleForm($products)
 {
     //Form related tasks (step 1)
-    //on submit save data in session
+    //On submit save data in session
     $email = $_POST["email"];
     $street = $_POST["street"];
     $streetnumber = $_POST["streetnumber"];
     $city = $_POST["city"];
     $zipcode = $_POST["zipcode"];
+
+    //display selected products and address data (alert box - bootstrap): message
+    $productNumbers= array_keys($_POST["products"]);
+    $productNames = [];
+    foreach ($productNumbers as $productNumber) {
+        $productNames[] = $products[$productNumber]["name"];
+    }
+
+    $message = "You picked the following useless products : <br> " . implode(", ", $productNames);
+    $message .= "<br>";
+    $message .= "Your email address : " . $email;
+    $message .= "<br>";
+    $message .= "Your address : " . $street . " " . $streetnumber . ", " . $zipcode . " " . $city;
+    return $message;
 
     // Validation (step 2)
 
@@ -90,12 +102,11 @@ function handleForm($products)
     if (!empty($invalidFields)) {
         // TODO: handle errors
         // Check required fields are not empty
-
-        if (in_array("email", "$invalidFields")): {
+        if (in_array("email", "$invalidFields")) {
             $errorMsg = "Please fill out your e-mail address.";
         }
         // TODO check Email address is valid WIP
-        elseif (in_array("emailInvalid", "$invalidFields")): {
+        else if (in_array("emailInvalid", "$invalidFields")) {
             $errorMsg = "Invalid e-mail format.";
         }
         if (in_array("street", "$invalidFields")) {
@@ -110,38 +121,23 @@ function handleForm($products)
             $errorMsg .= "Please fill out your city.";
             $errorMsg .= "<br>";
         }
-        if (in_array("zipcode", "$invalidFields")): {
+        if (in_array("zipcode", "$invalidFields")) {
             $errorMsg .= "Please fill out your zip code.";
             $errorMsg .= "<br>";
         }
-        elseif (in_array("zipcodeInvalid", "$invalidFields")): {
+        //TODO check Zip code are only numbers WIP
+        else if (in_array("zipcodeInvalid", "$invalidFields")) {
             $errorMsg .= "Zip code can only have numeric values.";
             $errorMsg .= "<br>";
         }
 
-
-        //TODO check Zip code are only numbers
-
         //Show any problems (empty or invalid data) with the fields at the top of the form. Tip: use the bootstrap alerts for inspiration.
-
         return "<div class='alert alert-danger'>" . $errorMsg . "</div>";
 
-
-    } else {
-    //display selected products and address data (alert box - bootstrap): message
-        $productNumbers= array_keys($_POST["products"]);
-        $productNames = [];
-        foreach ($productNumbers as $productNumber) {
-            $productNames[] = $products[$productNumber]["name"];
-        }
-
-        $message = "You picked the following useless products : <br> " . implode(", ", $productNames);
-        $message .= "<br>";
-        $message .= "Your email address : " . $email;
-        $message .= "<br>";
-        $message .= "Your address : " . $street . " " . $streetnumber . ", " . $zipcode . " " . $city;
-        return $message;
     }
+//    else {
+//
+//    }
 }
 
 //replace this if by an actual check
