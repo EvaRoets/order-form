@@ -77,15 +77,14 @@ function handleForm($products)
     $zipcode = $_POST["zipcode"];
 
     // Validation (step 2)
-    //TODO check Required fields are not empty
-    //TODO check Zip code are only numbers
-    //TODO check Email address is valid
-    //TODO Show any problems (empty or invalid data) with the fields at the top of the form. Tip: use the bootstrap alerts for inspiration.
+
     //TODO Show previous values in case of invalid form
 
     $invalidFields = validate();
     if (!empty($invalidFields)) {
         // TODO: handle errors
+        // Check required fields are not empty
+
         if (in_array("email", $invalidFields)) {
             $errorMsg = "Please fill out your e-mail address.";
         }
@@ -107,8 +106,12 @@ function handleForm($products)
             $errorMsg .= "<br>";
 
         }
+        //TODO check Zip code are only numbers
+        //TODO check Email address is valid
+        
+        //Show any problems (empty or invalid data) with the fields at the top of the form. Tip: use the bootstrap alerts for inspiration.
 
-        return "<div class="alert alert-danger">" . $errorMsg . "</div>";
+        return "<div class='alert alert-danger'>" . $errorMsg . "</div>";
 
 
     } else {
