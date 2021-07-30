@@ -85,30 +85,37 @@ function handleForm($products)
         // TODO: handle errors
         // Check required fields are not empty
 
-        if (in_array("email", $invalidFields)) {
+        if (in_array("email", "$invalidFields")) {
             $errorMsg = "Please fill out your e-mail address.";
         }
-        if (in_array("street", $invalidFields)) {
+        // TODO check Email address is valid WIP
+        if (in_array("emailInvalid", "$invalidFields")) {
+            $errorMsg = "Invalid e-mail format.";
+        }
+        if (in_array("street", "$invalidFields")) {
             $errorMsg .= "Please fill out your street.";
             $errorMsg .= "<br>";
         }
-        if (in_array("streetnumber", $invalidFields)) {
+        if (in_array("streetnumber", "$invalidFields")) {
             $errorMsg .= "Please fill out your street number.";
             $errorMsg .= "<br>";
         }
-        if (in_array("city", $invalidFields)) {
+        if (in_array("city", "$invalidFields")) {
             $errorMsg .= "Please fill out your city.";
             $errorMsg .= "<br>";
-
         }
-        if (in_array("zipcode", $invalidFields)) {
+        if (in_array("zipcode", "$invalidFields")) {
             $errorMsg .= "Please fill out your zip code.";
             $errorMsg .= "<br>";
-
         }
+        if (in_array("zipcodeInvalid", "$invalidFields")) {
+            $errorMsg .= "Zip code can only have numeric values.";
+            $errorMsg .= "<br>";
+        }
+
+
         //TODO check Zip code are only numbers
-        //TODO check Email address is valid
-        
+
         //Show any problems (empty or invalid data) with the fields at the top of the form. Tip: use the bootstrap alerts for inspiration.
 
         return "<div class='alert alert-danger'>" . $errorMsg . "</div>";
