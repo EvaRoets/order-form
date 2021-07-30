@@ -30,12 +30,14 @@ function whatIsHappening()
 }
 whatIsHappening();
 
-// TODO: provide some products (you may overwrite the example)
+//provide some products (you may overwrite the example)
 $products = [
-    ["name" => 'Goldfish Walker', 'price' => 34.99],
-    ["name" => 'Shoe Umbrella', 'price' => 8.95],
-    ["name" => 'Diet Water', 'price' => 1.8],
-    ["name" => 'Gas Powered Flashlight', 'price' => 14.5],
+    ["name" => "Goldfish Walker", "price" => 34.99],
+    ["name" => "Shoe Umbrella", "price" => 8.95],
+    ["name" => "Diet Water", "price" => 1.8],
+    ["name" => "Gas Powered Flashlight", "price" => 14.5],
+    ["name" => "Permeable Shower Curtain", "price" => 14.5],
+
 ];
 
 $totalValue = 0;
@@ -46,10 +48,9 @@ function validate()
     return [];
 }
 
-function handleForm()
+function handleForm($products)
 {
     // TODO: form related tasks (step 1)
-
     //TODO check if form is correctly submitted
 //    if (isset ($_POST["submit"])){
 //        echo "Submit button is clicked.";
@@ -58,14 +59,12 @@ function handleForm()
 //        echo "Data is not submitted";
 //    }
 
-//    TODO on submit save data in session
+    //TODO on submit save data in session
     $email = $_POST["email"];
     $street = $_POST["street"];
     $streetnumber = $_POST["streetnumber"];
     $city = $_POST["city"];
     $zipcode = $_POST["zipcode"];
-
-    $products = $_POST["products"];
 
     //TODO display selected products and address data (alert box - bootstrap): message
     $productNumbers= array_keys($_POST["products"]);
@@ -99,15 +98,6 @@ if ($formSubmitted) {
 
 $form_view = require "form-view.php"; // includes and evaluates the specified file
 echo $form_view;
-
-
-//PREPARATION
-//TODO update array with products to sell
-//TODO Check visibility all products & prices
-
-//STEP 1 ACCEPTING ORDERS
-//TODO Show order confirmation (+products en delivery address) at form submit
-//We will learn how to save this information to a database later, so no need to do this now.
 
 //STEP 2 VALIDATION
 //TODO check Required fields are not empty
