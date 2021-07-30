@@ -86,6 +86,31 @@ function handleForm($products)
     $invalidFields = validate();
     if (!empty($invalidFields)) {
         // TODO: handle errors
+        if (in_array("email", $invalidFields)) {
+            $errorMsg = "Please fill out your e-mail address.";
+        }
+        if (in_array("street", $invalidFields)) {
+            $errorMsg .= "Please fill out your street.";
+            $errorMsg .= "<br>";
+        }
+        if (in_array("streetnumber", $invalidFields)) {
+            $errorMsg .= "Please fill out your street number.";
+            $errorMsg .= "<br>";
+        }
+        if (in_array("city", $invalidFields)) {
+            $errorMsg .= "Please fill out your city.";
+            $errorMsg .= "<br>";
+
+        }
+        if (in_array("zipcode", $invalidFields)) {
+            $errorMsg .= "Please fill out your zip code.";
+            $errorMsg .= "<br>";
+
+        }
+
+        return "<div class="alert alert-danger">" . $errorMsg . "</div>";
+
+
     } else {
     //display selected products and address data (alert box - bootstrap): message
         $productNumbers= array_keys($_POST["products"]);
