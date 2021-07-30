@@ -68,20 +68,6 @@ function handleForm()
     $products = $_POST["products"];
 
     //TODO display selected products and address data (alert box - bootstrap): message
-    $productNumbers= array_keys($_POST["products"]);
-    $productNames = [];
-    foreach ($productNumbers as $productNumber) {
-        $productNames[] = $products[$productNumber]["name"];
-    }
-
-    // variables toevoegen?
-    $message = "You picked the following useless products : <br> " . implode(", ", $productNames);
-    $message .= "<br>";
-    $message .= 'Your email address : ' . $_POST['email'];
-    $message .= '<br>';
-    $message .= 'Your address : ' . $_POST['street'] . ' ' . $_POST['streetnumber'] . ', ' . $_POST['zipcode'] . ' ' . $_POST['city'];
-    return $message;
-
 
     // Validation (step 2)
     $invalidFields = validate();
@@ -93,7 +79,7 @@ function handleForm()
 }
 
 // TODO: replace this if by an actual check
-$formSubmitted = !empty($_POST); // checken of form leeg is of niet
+$formSubmitted = !empty($_POST); // Check if form is empty
 $confirmationMessage = "";
 if ($formSubmitted) {
     $confirmationMessage = handleForm($products);
