@@ -6,7 +6,7 @@
 // This line makes PHP behave in a more strict way
 declare(strict_types=1);
 
-// TODO enable error messages
+// Enable error messages
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
@@ -15,8 +15,7 @@ error_reporting(E_ALL);
 session_start();
 
 // Use this function when you need to need an overview of these variables
-function whatIsHappening()
-{
+function whatIsHappening() {
     var_dump("<pre>");
     echo '<h2>$_GET</h2>';
     var_dump($_GET);
@@ -28,9 +27,10 @@ function whatIsHappening()
     var_dump($_SESSION);
     var_dump("</pre>");
 }
+
 whatIsHappening();
 
-//provide some products (you may overwrite the example)
+// Provide some products (you may overwrite the example)
 $products = [
     ["name" => "Goldfish Walker", "price" => 34.99],
     ["name" => "Shoe Umbrella", "price" => 8.95],
@@ -45,51 +45,65 @@ $totalValue = 0;
 function validate()
 {
     // This function will send a list of invalid fields back
-    return [];
+    $invalidFields = [];
+    if (empty($_POST["email"])) {
+        array_push($invalidFields, "email");
+    }
+    if (empty($_POST["street"])) {
+        array_push($invalidFields, "street");
+    }
+    if (empty($_POST["streetnumber"])) {
+        array_push($invalidFields, "streetnumber");
+    }
+    if (empty($_POST["city"])) {
+        array_push($invalidFields, "city");
+    }
+    if (empty($_POST["zipcode"])) {
+        array_push($invalidFields, "zipcode");
+    }
+
+    return $invalidFields;
 }
+
 
 function handleForm($products)
 {
-    // TODO: form related tasks (step 1)
-    //TODO check if form is correctly submitted
-//    if (isset ($_POST["submit"])){
-//        echo "Submit button is clicked.";
-//
-//    } else {
-//        echo "Data is not submitted";
-//    }
-
-    //TODO on submit save data in session
+    //Form related tasks (step 1)
+    //on submit save data in session
     $email = $_POST["email"];
     $street = $_POST["street"];
     $streetnumber = $_POST["streetnumber"];
     $city = $_POST["city"];
     $zipcode = $_POST["zipcode"];
 
-    //TODO display selected products and address data (alert box - bootstrap): message
-    $productNumbers= array_keys($_POST["products"]);
-    $productNames = [];
-    foreach ($productNumbers as $productNumber) {
-        $productNames[] = $products[$productNumber]["name"];
-    }
-
-    $message = "You picked the following useless products : <br> " . implode(", ", $productNames);
-    $message .= "<br>";
-    $message .= "Your email address : " . $email;
-    $message .= "<br>";
-    $message .= "Your address : " . $street . " " . $streetnumber . ", " . $zipcode . " " . $city;
-    return $message;
-
     // Validation (step 2)
+    //TODO check Required fields are not empty
+    //TODO check Zip code are only numbers
+    //TODO check Email address is valid
+    //TODO Show any problems (empty or invalid data) with the fields at the top of the form. Tip: use the bootstrap alerts for inspiration.
+    //TODO Show previous values in case of invalid form
+
     $invalidFields = validate();
     if (!empty($invalidFields)) {
         // TODO: handle errors
     } else {
-        // TODO: handle successful submission
+    //display selected products and address data (alert box - bootstrap): message
+        $productNumbers= array_keys($_POST["products"]);
+        $productNames = [];
+        foreach ($productNumbers as $productNumber) {
+            $productNames[] = $products[$productNumber]["name"];
+        }
+
+        $message = "You picked the following useless products : <br> " . implode(", ", $productNames);
+        $message .= "<br>";
+        $message .= "Your email address : " . $email;
+        $message .= "<br>";
+        $message .= "Your address : " . $street . " " . $streetnumber . ", " . $zipcode . " " . $city;
+        return $message;
     }
 }
 
-// TODO: replace this if by an actual check
+//replace this if by an actual check
 $formSubmitted = !empty($_POST); // Check if form is empty
 $confirmationMessage = "";
 if ($formSubmitted) {
@@ -98,13 +112,6 @@ if ($formSubmitted) {
 
 $form_view = require "form-view.php"; // includes and evaluates the specified file
 echo $form_view;
-
-//STEP 2 VALIDATION
-//TODO check Required fields are not empty
-//TODO check Zip code are only numbers
-//TODO check Email address is valid
-//TODO Show any problems (empty or invalid data) with the fields at the top of the form. Tip: use the bootstrap alerts for inspiration.
-//TODO Show previous values in case of invalid form
 
 
 //STEP 3 SAVE DATA TO IMPROVE UX
@@ -137,3 +144,12 @@ echo $form_view;
 //TODO improve validation with html and JS
 
 //TODO Allow user to specify how much he or she wants to buy of a certain products
+
+
+//check if form is correctly submitted
+//    if (isset ($_POST["submit"])){
+//        echo "Submit button is clicked.";
+//
+//    } else {
+//        echo "Data is not submitted";
+//    }
