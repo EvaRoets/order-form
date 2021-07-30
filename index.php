@@ -79,37 +79,38 @@ function handleForm($products)
     if (!empty($invalidFields)) {
         // TODO: handle errors
         // Check required fields are not empty
-        if (in_array("email", "$invalidFields")) {
+        if (in_array("email", $invalidFields)) {
             $errorMsg = "Please fill out your e-mail address.";
         }
-        // TODO check Email address is valid WIP
-        elseif (in_array("emailInvalid", "$invalidFields")) {
+        // Check Email address is valid
+        elseif (in_array("emailInvalid", $invalidFields)) {
             $errorMsg = "Invalid e-mail format.";
+            $errorMsg .= "<br>";
         }
-        if (in_array("street", "$invalidFields")) {
+        if (in_array("street", $invalidFields)) {
             $errorMsg .= "Please fill out your street.";
             $errorMsg .= "<br>";
         }
-        if (in_array("streetnumber", "$invalidFields")) {
+        if (in_array("streetnumber", $invalidFields)) {
             $errorMsg .= "Please fill out your street number.";
             $errorMsg .= "<br>";
         }
-        if (in_array("city", "$invalidFields")) {
+        if (in_array("city", $invalidFields)) {
             $errorMsg .= "Please fill out your city.";
             $errorMsg .= "<br>";
         }
-        if (in_array("zipcode", "$invalidFields")) {
+        if (in_array("zipcode", $invalidFields)) {
             $errorMsg .= "Please fill out your zip code.";
             $errorMsg .= "<br>";
         }
-        //TODO check Zip code are only numbers WIP
-        elseif (in_array("zipcodeInvalid", "$invalidFields")) {
+        //check zip code are only numbers
+        elseif (in_array("zipcodeInvalid", $invalidFields)) {
             $errorMsg .= "Zip code can only have numeric values.";
-            $errorMsg .= "<br>";
         }
 
         //Show any problems (empty or invalid data) with the fields at the top of the form. Tip: use the bootstrap alerts for inspiration.
         return "<div class='alert alert-danger'>" . $errorMsg . "</div>";
+        //TODO check why error message is displayed inside success alert + fix
 
     }
     else {
@@ -133,6 +134,8 @@ function handleForm($products)
         $message .= "Your email address : " . $email;
         $message .= "<br>";
         $message .= "Your address : " . $street . " " . $streetnumber . ", " . $zipcode . " " . $city;
+
+        unset($email, $street, $streetnumber, $city, $zipcode, $_POST["products"]);
         return "<div class='alert alert-success'>"  . $message . "</div>";
 
     }
