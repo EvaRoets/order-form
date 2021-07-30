@@ -72,30 +72,7 @@ function validate()
 
 function handleForm($products)
 {
-    //Form related tasks (step 1)
-    //On submit save data in session
-    $email = $_POST["email"];
-    $street = $_POST["street"];
-    $streetnumber = $_POST["streetnumber"];
-    $city = $_POST["city"];
-    $zipcode = $_POST["zipcode"];
-
-    //display selected products and address data (alert box - bootstrap): message
-    $productNumbers= array_keys($_POST["products"]);
-    $productNames = [];
-    foreach ($productNumbers as $productNumber) {
-        $productNames[] = $products[$productNumber]["name"];
-    }
-
-    $message = "You picked the following useless products : <br> " . implode(", ", $productNames);
-    $message .= "<br>";
-    $message .= "Your email address : " . $email;
-    $message .= "<br>";
-    $message .= "Your address : " . $street . " " . $streetnumber . ", " . $zipcode . " " . $city;
-    return $message;
-
     // Validation (step 2)
-
     //TODO Show previous values in case of invalid form
 
     $invalidFields = validate();
@@ -106,7 +83,7 @@ function handleForm($products)
             $errorMsg = "Please fill out your e-mail address.";
         }
         // TODO check Email address is valid WIP
-        else if (in_array("emailInvalid", "$invalidFields")) {
+        elseif (in_array("emailInvalid", "$invalidFields")) {
             $errorMsg = "Invalid e-mail format.";
         }
         if (in_array("street", "$invalidFields")) {
@@ -126,7 +103,7 @@ function handleForm($products)
             $errorMsg .= "<br>";
         }
         //TODO check Zip code are only numbers WIP
-        else if (in_array("zipcodeInvalid", "$invalidFields")) {
+        elseif (in_array("zipcodeInvalid", "$invalidFields")) {
             $errorMsg .= "Zip code can only have numeric values.";
             $errorMsg .= "<br>";
         }
@@ -135,9 +112,30 @@ function handleForm($products)
         return "<div class='alert alert-danger'>" . $errorMsg . "</div>";
 
     }
-//    else {
-//
-//    }
+    else {
+        //Form related tasks (step 1)
+        //On submit save data in session
+        $email = $_POST["email"];
+        $street = $_POST["street"];
+        $streetnumber = $_POST["streetnumber"];
+        $city = $_POST["city"];
+        $zipcode = $_POST["zipcode"];
+
+        //display selected products and address data (alert box - bootstrap): message
+        $productNumbers= array_keys($_POST["products"]);
+        $productNames = [];
+        foreach ($productNumbers as $productNumber) {
+            $productNames[] = $products[$productNumber]["name"];
+        }
+
+        $message = "You picked the following useless products : <br> " . implode(", ", $productNames);
+        $message .= "<br>";
+        $message .= "Your email address : " . $email;
+        $message .= "<br>";
+        $message .= "Your address : " . $street . " " . $streetnumber . ", " . $zipcode . " " . $city;
+        return "<div class='alert alert-success'>"  . $message . "</div>";
+
+    }
 }
 
 //replace this if by an actual check
