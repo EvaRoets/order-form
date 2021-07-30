@@ -68,6 +68,18 @@ function handleForm()
     $products = $_POST["products"];
 
     //TODO display selected products and address data (alert box - bootstrap): message
+    $productNumbers= array_keys($_POST["products"]);
+    $productNames = [];
+    foreach ($productNumbers as $productNumber) {
+        $productNames[] = $products[$productNumber]["name"];
+    }
+
+    $message = "You picked the following useless products : <br> " . implode(", ", $productNames);
+    $message .= "<br>";
+    $message .= "Your email address : " . $email;
+    $message .= "<br>";
+    $message .= "Your address : " . $street . " " . $streetnumber . ", " . $zipcode . " " . $city;
+    return $message;
 
     // Validation (step 2)
     $invalidFields = validate();
