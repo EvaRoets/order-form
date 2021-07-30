@@ -144,9 +144,9 @@ function handleForm($products)
 
 //replace this if by an actual check
 $formSubmitted = !empty($_POST); // Check if form is empty
-$confirmationMessage = "";
+$confirmationMsg = [];
 if ($formSubmitted) {
-    $confirmationMessage = handleForm($products);
+    $confirmationMsg = handleForm($products);
 }
 
 $form_view = require "form-view.php"; // includes and evaluates the specified file

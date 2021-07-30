@@ -14,12 +14,9 @@
 <body>
 <div class="container">
     <h1>Place your order</h1>
-    <?php if (!empty($confirmationMessage)) { ?>
-        <div class="alert alert-success">
-            <?= $confirmationMessage ?>
-        </div>
-        <div class="alert alert-danger">
-            <?= $errorMsg ?>
+    <?php if (!empty($confirmationMsg)) { ?>
+        <div class="alert <?php if ($confirmationMsg[$invalidFields]) {echo 'alert-danger'; } else { echo 'alert-success'; } ?>">
+            <?= $confirmationMsg[$message] ?>
         </div>
     <?php }; ?>
 <!--    <nav>-->
