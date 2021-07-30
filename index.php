@@ -49,6 +49,9 @@ function validate()
     if (empty($_POST["email"])) {
         array_push($invalidFields, "email");
     }
+    if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+        array_push($invalidFields, "emailInvalid");
+    }
     if (empty($_POST["street"])) {
         array_push($invalidFields, "street");
     }
@@ -60,6 +63,9 @@ function validate()
     }
     if (empty($_POST["zipcode"])) {
         array_push($invalidFields, "zipcode");
+    }
+    if (!is_numeric($_POST["zipcode"])) {
+        array_push($invalidFields, "zipcodeInvalid");
     }
 
     return $invalidFields;
@@ -85,11 +91,11 @@ function handleForm($products)
         // TODO: handle errors
         // Check required fields are not empty
 
-        if (in_array("email", "$invalidFields")) {
+        if (in_array("email", "$invalidFields")): {
             $errorMsg = "Please fill out your e-mail address.";
         }
         // TODO check Email address is valid WIP
-        if (in_array("emailInvalid", "$invalidFields")) {
+        elseif (in_array("emailInvalid", "$invalidFields")): {
             $errorMsg = "Invalid e-mail format.";
         }
         if (in_array("street", "$invalidFields")) {
@@ -104,11 +110,11 @@ function handleForm($products)
             $errorMsg .= "Please fill out your city.";
             $errorMsg .= "<br>";
         }
-        if (in_array("zipcode", "$invalidFields")) {
+        if (in_array("zipcode", "$invalidFields")): {
             $errorMsg .= "Please fill out your zip code.";
             $errorMsg .= "<br>";
         }
-        if (in_array("zipcodeInvalid", "$invalidFields")) {
+        elseif (in_array("zipcodeInvalid", "$invalidFields")): {
             $errorMsg .= "Zip code can only have numeric values.";
             $errorMsg .= "<br>";
         }
