@@ -73,8 +73,6 @@ function validate()
 function handleForm($products)
 {
     // Validation (step 2)
-    //TODO Show previous values in case of invalid form
-
     $invalidFields = validate();
     if (!empty($invalidFields)) {
         // TODO: handle errors
@@ -139,6 +137,9 @@ function handleForm($products)
         return "<div class='alert alert-success'>"  . $message . "</div>";
 
     }
+
+    //TODO Show previous values in case of invalid form
+
 }
 
 //replace this if by an actual check

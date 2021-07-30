@@ -18,6 +18,9 @@
         <div class="alert alert-success">
             <?= $confirmationMessage ?>
         </div>
+        <div class="alert alert-danger">
+            <?= $errorMsg ?>
+        </div>
     <?php }; ?>
 <!--    <nav>-->
 <!--        <ul class="nav">-->
