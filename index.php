@@ -42,11 +42,12 @@ $products = [
 
 $totalValue = 0;
 
-function validate(){
+function validate()
+{
     // This function will send a list of invalid fields back
     $invalidFields = [];
     if (empty($_POST["email"])) {
-    //if (!isset($_POST["email"])) {
+        //if (!isset($_POST["email"])) {
         array_push($invalidFields, "email");
     }
     if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
@@ -113,11 +114,11 @@ function handleForm($products)
     } elseif (empty($invalidFields)) {
         //Form related tasks (step 1)
         //On submit save data in session
-        $email = $_POST["email"];
-        $street = $_POST["street"];
-        $streetnumber = $_POST["streetnumber"];
-        $city = $_POST["city"];
-        $zipcode = $_POST["zipcode"];
+        $email = htmlspecialchars($_POST["email"]);
+        $street = htmlspecialchars($_POST["street"]);
+        $streetnumber = htmlspecialchars($_POST["streetnumber"]);
+        $city = htmlspecialchars($_POST["city")];
+        $zipcode = htmlspecialchars($_POST["zipcode"]);
 
         //display selected products and address data (alert box - bootstrap): message
         $productNumbers = array_keys($_POST["products"]);
