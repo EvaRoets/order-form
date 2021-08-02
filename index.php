@@ -1,5 +1,4 @@
 <?php
-
 // This file is your starting point (= since it's the index)
 // It will contain most of the logic, to prevent making a messy mix in the html
 
@@ -42,8 +41,7 @@ $products = [
 
 $totalValue = 0;
 
-function validate()
-{
+function validate(){
     // This function will send a list of invalid fields back
     $invalidFields = [];
     if (empty($_POST["email"])) {
@@ -74,7 +72,7 @@ function validate()
 function handleForm($products) {
     // Validation (step 2)
     $invalidFields = validate();
-    if (isset ($_POST["submit"]) && !empty($invalidFields)) {
+    if (!empty($invalidFields)) {
         // Handle errors
         // Check required fields are not empty
         if (in_array("email", $invalidFields)) {
@@ -108,15 +106,8 @@ function handleForm($products) {
         //Show any problems (empty or invalid data) with the fields at the top of the form. Tip: use the bootstrap alerts for inspiration.
         return "<div class='alert alert-danger'>" . $errorMsg . "</div>";
 
-    } elseif (isset ($_POST["submit"]) && empty($invalidFields)) {
+    } elseif (empty($invalidFields)) {
         //Form related tasks (step 1)
-        //On submit save data in session
-        $_SESSION["email"] = htmlspecialchars($_POST["email"]);
-        $_SESSION["street"] = htmlspecialchars($_POST["street"]);
-        $_SESSION["streetnumber"] = htmlspecialchars($_POST["streetnumber"]);
-        $_SESSION["city"] = htmlspecialchars($_POST["city"]);
-        $_SESSION["zipcode"] = htmlspecialchars($_POST["zipcode"]);
-
         //display selected products and address data (alert box - bootstrap): message
         $productNumbers = array_keys($_POST["products"]);
         $productNames = [];
@@ -126,11 +117,18 @@ function handleForm($products) {
 
         $message = "You picked the following useless products : <br> " . implode(", ", $productNames);
         $message .= "<br>";
-        $message .= "Your email address : " . $email;
+        $message .= "Your email address : " . $_POST["email"];
         $message .= "<br>";
-        $message .= "Your address : " . $street . " " . $streetnumber . ", " . $zipcode . " " . $city;
+        $message .= "Your address : " . $_POST["street"] . " " . $_POST["streetnumber"] . ", " . $_POST["zipcode"] . " " . $_POST["city"];
 
-        unset($email, $street, $streetnumber, $city, $zipcode, $_POST["products"]);
+        //On submit save data in session
+        $_SESSION["email"] = htmlspecialchars($_POST["email"]);
+        $_SESSION["street"] = htmlspecialchars($_POST["street"]);
+        $_SESSION["streetnumber"] = htmlspecialchars($_POST["streetnumber"]);
+        $_SESSION["city"] = htmlspecialchars($_POST["city"]);
+        $_SESSION["zipcode"] = htmlspecialchars($_POST["zipcode"]);
+
+//        unset($_POST["email"], $_POST["street"], $_POST["streetnumber"], $_POST["city"], $_POST["zipcode"], $_POST["products"]);
         return "<div class='alert alert-success'>" . $message . "</div>";
 
     }
