@@ -15,7 +15,8 @@ error_reporting(E_ALL);
 session_start();
 
 // Use this function when you need to need an overview of these variables
-function whatIsHappening() {
+function whatIsHappening()
+{
     var_dump("<pre>");
     echo '<h2>$_GET</h2>';
     var_dump($_GET);
@@ -37,16 +38,15 @@ $products = [
     ["name" => "Diet Water", "price" => 1.8],
     ["name" => "Gas Powered Flashlight", "price" => 14.5],
     ["name" => "Permeable Shower Curtain", "price" => 14.5],
-
 ];
 
 $totalValue = 0;
 
-function validate()
-{
+function validate(){
     // This function will send a list of invalid fields back
     $invalidFields = [];
     if (empty($_POST["email"])) {
+    //if (!isset($_POST["email"])) {
         array_push($invalidFields, "email");
     }
     if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
@@ -79,8 +79,9 @@ function handleForm($products)
         // Check required fields are not empty
         if (in_array("email", $invalidFields)) {
             $errorMsg = "Please fill out your e-mail address.";
-        }
-        // Check Email address is valid
+            $errorMsg .= "<br>";
+
+        } // Check Email address is valid
         elseif (in_array("emailInvalid", $invalidFields)) {
             $errorMsg = "Invalid e-mail format.";
             $errorMsg .= "<br>";
@@ -100,8 +101,7 @@ function handleForm($products)
         if (in_array("zipcode", $invalidFields)) {
             $errorMsg .= "Please fill out your zip code.";
             $errorMsg .= "<br>";
-        }
-        //check zip code are only numbers
+        } //check zip code are only numbers
         elseif (in_array("zipcodeInvalid", $invalidFields)) {
             $errorMsg .= "Zip code can only have numeric values.";
         }
@@ -110,8 +110,7 @@ function handleForm($products)
         return "<div class='alert alert-danger'>" . $errorMsg . "</div>";
         //TODO check why error message is displayed inside success alert + fix
 
-    }
-    else {
+    } elseif (empty($invalidFields)) {
         //Form related tasks (step 1)
         //On submit save data in session
         $email = $_POST["email"];
@@ -121,7 +120,7 @@ function handleForm($products)
         $zipcode = $_POST["zipcode"];
 
         //display selected products and address data (alert box - bootstrap): message
-        $productNumbers= array_keys($_POST["products"]);
+        $productNumbers = array_keys($_POST["products"]);
         $productNames = [];
         foreach ($productNumbers as $productNumber) {
             $productNames[] = $products[$productNumber]["name"];
@@ -134,7 +133,7 @@ function handleForm($products)
         $message .= "Your address : " . $street . " " . $streetnumber . ", " . $zipcode . " " . $city;
 
         unset($email, $street, $streetnumber, $city, $zipcode, $_POST["products"]);
-        return "<div class='alert alert-success'>"  . $message . "</div>";
+        return "<div class='alert alert-success'>" . $message . "</div>";
 
     }
 
