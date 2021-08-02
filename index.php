@@ -71,12 +71,11 @@ function validate()
     return $invalidFields;
 }
 
-function handleForm($products)
-{
+function handleForm($products) {
     // Validation (step 2)
     $invalidFields = validate();
-    if (!empty($invalidFields)) {
-        // TODO: handle errors
+    if (isset ($_POST["submit"]) && !empty($invalidFields)) {
+        // Handle errors
         // Check required fields are not empty
         if (in_array("email", $invalidFields)) {
             $errorMsg = "Please fill out your e-mail address.";
@@ -106,19 +105,17 @@ function handleForm($products)
         elseif (in_array("zipcodeInvalid", $invalidFields)) {
             $errorMsg .= "Zip code can only have numeric values.";
         }
-
         //Show any problems (empty or invalid data) with the fields at the top of the form. Tip: use the bootstrap alerts for inspiration.
         return "<div class='alert alert-danger'>" . $errorMsg . "</div>";
-        //TODO check why error message is displayed inside success alert + fix
 
-    } elseif (empty($invalidFields)) {
+    } elseif (isset ($_POST["submit"]) && empty($invalidFields)) {
         //Form related tasks (step 1)
         //On submit save data in session
-        $email = htmlspecialchars($_POST["email"]);
-        $street = htmlspecialchars($_POST["street"]);
-        $streetnumber = htmlspecialchars($_POST["streetnumber"]);
-        $city = htmlspecialchars($_POST["city")];
-        $zipcode = htmlspecialchars($_POST["zipcode"]);
+        $_SESSION["email"] = htmlspecialchars($_POST["email"]);
+        $_SESSION["street"] = htmlspecialchars($_POST["street"]);
+        $_SESSION["streetnumber"] = htmlspecialchars($_POST["streetnumber"]);
+        $_SESSION["city"] = htmlspecialchars($_POST["city"]);
+        $_SESSION["zipcode"] = htmlspecialchars($_POST["zipcode"]);
 
         //display selected products and address data (alert box - bootstrap): message
         $productNumbers = array_keys($_POST["products"]);
@@ -185,10 +182,3 @@ echo $form_view;
 //TODO Allow user to specify how much he or she wants to buy of a certain products
 
 
-//check if form is correctly submitted
-//    if (isset ($_POST["submit"])){
-//        echo "Submit button is clicked.";
-//
-//    } else {
-//        echo "Data is not submitted";
-//    }
