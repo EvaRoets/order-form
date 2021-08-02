@@ -36,7 +36,7 @@ $products = [
     ["name" => "Shoe Umbrella", "price" => 8.95],
     ["name" => "Diet Water", "price" => 1.8],
     ["name" => "Gas Powered Flashlight", "price" => 14.5],
-    ["name" => "Permeable Shower Curtain", "price" => 14.5],
+    ["name" => "Permeable Shower Curtain", "price" => 12.95],
 ];
 
 $totalValue = 0;
@@ -115,20 +115,33 @@ function handleForm($products) {
             $productNames[] = $products[$productNumber]["name"];
         }
 
+        $email = $_POST["email"];
+        $street = $_POST["street"];
+        $streetNumber = $_POST["street"];
+        $zipcode = $_POST["zipcode"];
+        $city = $_POST["city"];
+
+
         $message = "You picked the following useless products : <br> " . implode(", ", $productNames);
         $message .= "<br>";
-        $message .= "Your email address : " . $_POST["email"];
+        $message .= "Your email address : " . $email;
         $message .= "<br>";
-        $message .= "Your address : " . $_POST["street"] . " " . $_POST["streetnumber"] . ", " . $_POST["zipcode"] . " " . $_POST["city"];
+        $message .= "Your address : " . $street . " " . $streetNumber . ", " . $zipcode . " " . $city;
 
         //On submit save data in session
-        $_SESSION["email"] = htmlspecialchars($_POST["email"]);
-        $_SESSION["street"] = htmlspecialchars($_POST["street"]);
-        $_SESSION["streetnumber"] = htmlspecialchars($_POST["streetnumber"]);
-        $_SESSION["city"] = htmlspecialchars($_POST["city"]);
-        $_SESSION["zipcode"] = htmlspecialchars($_POST["zipcode"]);
+        $_SESSION["email"] = htmlspecialchars($email);
+        $_SESSION["street"] = htmlspecialchars($street);
+        $_SESSION["streetnumber"] = htmlspecialchars($streetnumber);
+        $_SESSION["city"] = htmlspecialchars($city);
+        $_SESSION["zipcode"] = htmlspecialchars($zipcode);
 
-//        unset($_POST["email"], $_POST["street"], $_POST["streetnumber"], $_POST["city"], $_POST["zipcode"], $_POST["products"]);
+        setcookie( "email", $email, time() + 36000 );
+        setcookie( "street", $street, time() + 36000 );
+        setcookie( "streetnumber", $streetNumber, time() + 36000 );
+        setcookie( "city", $city, time() + 36000 );
+        setcookie( "zipcode", $zipcode, time() + 36000 );
+
+        unset($email, $street, $streetNumber, $city, $zipcode, $products);
         return "<div class='alert alert-success'>" . $message . "</div>";
 
     }
