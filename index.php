@@ -29,7 +29,6 @@ function whatIsHappening()
 }
 
 whatIsHappening();
-
 // Provide some products (you may overwrite the example)
 $products = [
     ["name" => "Goldfish Walker", "price" => 34.99],
@@ -41,7 +40,8 @@ $products = [
 
 $totalValue = 0;
 
-function validate(){
+function validate()
+{
     // This function will send a list of invalid fields back
     $invalidFields = [];
     if (empty($_POST["email"])) {
@@ -69,7 +69,8 @@ function validate(){
     return $invalidFields;
 }
 
-function handleForm($products) {
+function handleForm($products, &$totalValue)
+{
     // Validation (step 2)
     $invalidFields = validate();
     if (!empty($invalidFields)) {
@@ -113,14 +114,14 @@ function handleForm($products) {
         $productNames = [];
         foreach ($productNumbers as $productNumber) {
             $productNames[] = $products[$productNumber]["name"];
+            $totalValue = $totalValue + $products[$productNumber]["price"];
         }
 
-        $email = $_POST["email"];
-        $street = $_POST["street"];
-        $streetNumber = $_POST["street"];
-        $zipcode = $_POST["zipcode"];
-        $city = $_POST["city"];
-
+        $email = htmlspecialchars($_POST["email"]);
+        $street = htmlspecialchars($_POST["street"]);
+        $streetNumber = htmlspecialchars($_POST["street"]);
+        $zipcode = htmlspecialchars($_POST["zipcode"]);
+        $city = htmlspecialchars($_POST["city"]);
 
         $message = "You picked the following useless products : <br> " . implode(", ", $productNames);
         $message .= "<br>";
@@ -129,24 +130,15 @@ function handleForm($products) {
         $message .= "Your address : " . $street . " " . $streetNumber . ", " . $zipcode . " " . $city;
 
         //On submit save data in session
-        $_SESSION["email"] = htmlspecialchars($email);
-        $_SESSION["street"] = htmlspecialchars($street);
-        $_SESSION["streetnumber"] = htmlspecialchars($streetnumber);
-        $_SESSION["city"] = htmlspecialchars($city);
-        $_SESSION["zipcode"] = htmlspecialchars($zipcode);
-
-        setcookie( "email", $email, time() + 36000 );
-        setcookie( "street", $street, time() + 36000 );
-        setcookie( "streetnumber", $streetNumber, time() + 36000 );
-        setcookie( "city", $city, time() + 36000 );
-        setcookie( "zipcode", $zipcode, time() + 36000 );
+        $_SESSION["email"] = $email;
+        $_SESSION["street"] = $street;
+        $_SESSION["streetnumber"] = $streetNumber;
+        $_SESSION["city"] = $city;
+        $_SESSION["zipcode"] = $zipcode;
 
         unset($email, $street, $streetNumber, $city, $zipcode, $products);
         return "<div class='alert alert-success'>" . $message . "</div>";
-
     }
-
-    //TODO Show previous values in case of invalid form
 
 }
 
@@ -154,17 +146,11 @@ function handleForm($products) {
 $formSubmitted = !empty($_POST); // Check if form is empty
 $confirmationMsg = [];
 if ($formSubmitted) {
-    $confirmationMsg = handleForm($products);
+    $confirmationMsg = handleForm($products,$totalValue);
 }
 
 $form_view = require "form-view.php"; // includes and evaluates the specified file
 echo $form_view;
-
-
-//STEP 3 SAVE DATA TO IMPROVE UX
-//TODO Check out the possibilities of the PHP session and cookies.
-//TODO prefill the address (after the first usage), as long as the browser isn't closed. Which of these techniques is the better choice here?
-//TODO check any legal requirements when using cookies
 
 //STEP 4 EXPANDING DUE TO SUCCESS
 //TODO Read about get_variables and what you can do with it.
