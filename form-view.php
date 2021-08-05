@@ -12,20 +12,25 @@
     <title>Things you don't need</title>
 </head>
 <body>
+
 <div class="container">
     <h1>Place your order</h1>
+
     <?php if (!empty($confirmationMsg)) { ?>
         <div class="<?php if ($confirmationMsg[$invalidFields]) {echo 'alert-danger'; } else { echo 'alert-success'; } ?>">
             <?= $confirmationMsg ?>
         </div>
     <?php } ?>
+
+
+
     <nav>
         <ul class="nav">
             <li class="nav-item">
-                <a class="nav-link active" href="?food=1">Things you don't need</a>
+                <a class="nav-link active" href="index.php?order=products1">Things you don't need</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="?food=0">Things you can't buy</a>
+                <a class="nav-link" href="index.php?order=products2">Things you can't buy</a>
             </li>
         </ul>
     </nav>

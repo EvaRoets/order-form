@@ -52,7 +52,7 @@ $order = $_GET['order'] ?? 'drinks';
 
 
 // Provide some products (you may overwrite the example)
-$products = [
+$products1 = [
     new Products("Goldfish Walker", 34.99),
     new Products("Shoe Umbrella", 8.95),
     new Products("Diet Water", 1.8),
@@ -60,25 +60,25 @@ $products = [
     new Products("Permeable Shower Curtain", 12.95),
 ];
 
-//$products = [
-//    new Products("Time", 1),
-//    new Products("Sunny Days", 2),
-//    new Products("Purpose of Life", 3),
-//    new Products("Inner Peace", 5),
-//    new Products("Wisdom", 5),
-//];
+$products2 = [
+    new Products("Time", 1),
+    new Products("Sunny Days", 2),
+    new Products("Purpose of Life", 3),
+    new Products("Inner Peace", 5),
+    new Products("Wisdom", 5),
+];
 
-$products[0]->getInfo();
-$products[1]->getInfo();
-$products[2]->getInfo();
-$products[3]->getInfo();
-$products[4]->getInfo();
+$products1[0]->getInfo();
+$products1[1]->getInfo();
+$products1[2]->getInfo();
+$products1[3]->getInfo();
+$products1[4]->getInfo();
 
-//$products[5]->getInfo();
-//$products[6]->getInfo();
-//$products[7]->getInfo();
-//$products[8]->getInfo();
-//$products[9]->getInfo();
+$products2[0]->getInfo();
+$products2[1]->getInfo();
+$products2[2]->getInfo();
+$products2[3]->getInfo();
+$products2[4]->getInfo();
 
 $totalValue = 0;
 
