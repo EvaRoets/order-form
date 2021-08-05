@@ -18,17 +18,34 @@ class Contacts
         $this->city = $city;
         $this->order = $order;
     }
-    public function getOrderInfo()
+    public function getEmail()
     {
         return $this->email;
+    }
+    public function getStreet()
+    {
         return $this->street;
-        return $this->streetNumber;
-        return $this->zipcode;
-        return $this->city;
-        return $this->order;
-
 
     }
+    public function getStreetNumber()
+    {
+        return $this->streetNumber;
+    }
+    public function getZipCode()
+    {
+        return $this->zipcode;
+    }
+    public function getCity()
+    {
+        return $this->city;
+    }
+    public function getOrder()
+    {
+        return $this->order;
+    }
+
+
+
 
 }
 
