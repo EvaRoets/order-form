@@ -14,7 +14,7 @@ error_reporting(E_ALL);
 session_start();
 // Add classes
 require "Products.php";
-require "Contact.php";
+require "Orders.php";
 
 // Use this function when you need to need an overview of these variables
 function whatIsHappening()
@@ -30,26 +30,7 @@ function whatIsHappening()
     var_dump($_SESSION);
     var_dump("</pre>");
 }
-
 whatIsHappening();
-
-if(!empty($_GET)){
-    foreach ($_GET as $key=>$get){
-        if(!in_array($key, ["order"])){ //to send only allowed keys in $_GET
-            unset($_GET[$key]);
-        }
-    }
-
-    if(!in_array($_GET["order"], ['food', 'drinks'])){  //to send only allowed values in 'order'
-        unset($_GET['order']);
-    }
-}
-
-$order = $_GET['order'] ?? 'drinks';
-
-
-
-
 
 // Provide some products (you may overwrite the example)
 $products1 = [
@@ -60,13 +41,13 @@ $products1 = [
     new Products("Permeable Shower Curtain", 12.95),
 ];
 
-$products2 = [
-    new Products("Time", 1),
-    new Products("Sunny Days", 2),
-    new Products("Purpose of Life", 3),
-    new Products("Inner Peace", 5),
-    new Products("Wisdom", 5),
-];
+//$products2 = [
+//    new Products("Time", 1),
+//    new Products("Sunny Days", 2),
+//    new Products("Purpose of Life", 3),
+//    new Products("Inner Peace", 5),
+//    new Products("Wisdom", 5),
+//];
 
 $products1[0]->getInfo();
 $products1[1]->getInfo();
@@ -74,11 +55,11 @@ $products1[2]->getInfo();
 $products1[3]->getInfo();
 $products1[4]->getInfo();
 
-$products2[0]->getInfo();
-$products2[1]->getInfo();
-$products2[2]->getInfo();
-$products2[3]->getInfo();
-$products2[4]->getInfo();
+//$products2[0]->getInfo();
+//$products2[1]->getInfo();
+//$products2[2]->getInfo();
+//$products2[3]->getInfo();
+//$products2[4]->getInfo();
 
 $totalValue = 0;
 
@@ -152,11 +133,11 @@ function handleForm($products, &$totalValue)
     } elseif (empty($invalidFields)) {
         //Form related tasks (step 1)
         //display selected products and address data (alert box - bootstrap): message
-        $productNumbers = array_keys($_POST["products"]);
+        $productNumbers = array_keys($_POST["products1"]); //TODO check how to look thru class array
         $productNames = [];
         foreach ($productNumbers as $productNumber) {
-            $productNames[] = $products[$productNumber]["name"];
-            $totalValue = $totalValue + $products[$productNumber]["price"];
+            $productNames[] = $products[$productNumber]->name;
+            $totalValue = $totalValue + $products[$productNumber]->price;
         }
 
         $email = htmlspecialchars($_POST["email"]);
@@ -188,17 +169,13 @@ function handleForm($products, &$totalValue)
 $formSubmitted = !empty($_POST); // Check if form is empty
 $confirmationMsg = [];
 if ($formSubmitted) {
-    $confirmationMsg = handleForm($products,$totalValue);
+    $confirmationMsg = handleForm($products1,$totalValue);
 }
 
-$form_view = require "form-view.php"; // includes and evaluates the specified file
-echo $form_view;
+require "form-view.php"; // includes and evaluates the specified file
 
 //STEP 4 EXPANDING DUE TO SUCCESS
-//TODO Read about get_variables and what you can do with it.
 //TODO Find commented navigation and activate it. Tweak the content for your own store
-
-
 //TODO make navigation toggle between the two product categories
 
 //Nice-to-have features

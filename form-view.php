@@ -21,25 +21,23 @@
             <?= $confirmationMsg ?>
         </div>
     <?php } ?>
-
-
-
+    <?php // Navigation for when you need it ?>
     <nav>
         <ul class="nav">
             <li class="nav-item">
-                <a class="nav-link active" href="index.php?order=products1">Things you don't need</a>
+                <a class="nav-link active" href="">Things you don't need</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="index.php?order=products2">Things you can't buy</a>
+                <a class="nav-link" href="">Things you can't buy</a>
+
             </li>
         </ul>
     </nav>
 
-
     <form method="post">
         <fieldset>
             <legend>Products</legend>
-            <?php foreach ($products as $i => $product): ?>
+            <?php foreach ($products1 as $i => $product): ?>
                 <label>
                     <?php // <?p= is equal to <?php echo ?>
                     <input type="checkbox" value="1" name="products[<?php echo $i ?>]"/> <?php echo $product->name?>

@@ -26,6 +26,9 @@ class Contacts
         return $this->zipcode;
         return $this->city;
         return $this->order;
+
+
+
     }
 
 }
