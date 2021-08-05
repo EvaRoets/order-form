@@ -65,7 +65,15 @@
 
         <fieldset>
             <legend>Products</legend>
-            <?php foreach ($products as $i => $product): ?>
+            <?php foreach ($Products as $i => $product): ?>
+
+
+
+                $class = new MyClass();
+
+                foreach($class as $key => $value) {
+                print "$key => $value\n";
+
                 <label>
                     <?php // <?p= is equal to <?php echo ?>
                     <input type="checkbox" value="1" name="products[<?php echo $i ?>]"/> <?php echo $product['name'] ?>

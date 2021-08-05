@@ -43,29 +43,18 @@ whatIsHappening();
 //];
 
 $product1 = new Products("Goldfish Walker", 34.99);
-$product1->getInfo();
-echo "Name: {$product1->name}</br>";
-echo "Price: {$product1->price}</br>";
-
 $product2 = new Products("Shoe Umbrella", 8.95);
-$product2->getInfo();
-echo "Name: {$product2->name}</br>";
-echo "Price: {$product2->price}</br>";
-
 $product3 = new Products("Diet Water", 1.8);
-$product3->getInfo();
-echo "Name: {$product3->name}</br>";
-echo "Price: {$product3->price}</br>";
-
 $product4 = new Products("Gas Powered Flashlight", 14.5);
-$product4->getInfo();
-echo "Name: {$product4->name}</br>";
-echo "Price: {$product4->price}</br>";
-
 $product5 = new Products("Permeable Shower Curtain", 12.95);
-$product5->getInfo();
-echo "Name: {$product5->name}</br>";
-echo "Price: {$product5->price}</br>";
+
+$products = [
+    $product1->getInfo(),
+    $product2->getInfo(),
+    $product3->getInfo(),
+    $product4->getInfo(),
+    $product5->getInfo(),
+];
 
 $totalValue = 0;
 

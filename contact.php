@@ -2,11 +2,11 @@
 
 class Contacts
 {
-    public string $email;
-    public string $street;
-    public int $streetNumber;
-    public int $zipcode;
-    public string $city;
+    private string $email;
+    private string $street;
+    private int $streetNumber;
+    private int $zipcode;
+    private string $city;
 
     public function __construct(string $email, string $street, int $streetNumber, int $zipcode, string $city)
     {
@@ -16,7 +16,7 @@ class Contacts
         $this->zipcode = $zipcode;
         $this->city = $city;
     }
-    public function getInfo()
+    public function getContactInfogit()
     {
         return $this->email;
         return $this->street;
@@ -28,8 +28,6 @@ class Contacts
 }
 
 ?>
-
-
 
 
 

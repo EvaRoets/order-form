@@ -12,16 +12,12 @@ class Products
     }
     public function getInfo()
     {
-        return $this->name;
-        return number_format($this->price, 2);
+        echo "Name: {$this->name}</br>";
+        echo "Price: {$this->price}</br>";
     }
 
 }
 
 ?>
-
-
-
-
 
 
