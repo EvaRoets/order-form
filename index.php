@@ -13,8 +13,9 @@ error_reporting(E_ALL);
 // We are going to use session variables so we need to enable sessions
 session_start();
 
-// Add class
+// Add classes to replace arrays
 require "Products.php";
+require "Contact.php";
 
 // Use this function when you need to need an overview of these variables
 function whatIsHappening()
@@ -40,30 +41,31 @@ whatIsHappening();
 //    ["name" => "Gas Powered Flashlight", "price" => 14.5],
 //    ["name" => "Permeable Shower Curtain", "price" => 12.95],
 //];
-$product1 = new Products(Goldfish Walker, 34.99);
+
+$product1 = new Products("Goldfish Walker", 34.99);
 $product1->getInfo();
-echo "Name: {$this->name}</br>";
-echo "Price: {$this->price}</br>";
+echo "Name: {$product1->name}</br>";
+echo "Price: {$product1->price}</br>";
 
-$product2 = new Products(Shoe Umbrella, 8.95);
+$product2 = new Products("Shoe Umbrella", 8.95);
 $product2->getInfo();
-echo "Name: {$this->name}</br>";
-echo "Price: {$this->price}</br>";
+echo "Name: {$product2->name}</br>";
+echo "Price: {$product2->price}</br>";
 
-$product3 = new Products(Diet Water, 1.8);
+$product3 = new Products("Diet Water", 1.8);
 $product3->getInfo();
-echo "Name: {$this->name}</br>";
-echo "Price: {$this->price}</br>";
+echo "Name: {$product3->name}</br>";
+echo "Price: {$product3->price}</br>";
 
-$product4 = new Products(Gas Powered Flashlight, 14.5);
+$product4 = new Products("Gas Powered Flashlight", 14.5);
 $product4->getInfo();
-echo "Name: {$this->name}</br>";
-echo "Price: {$this->price}</br>";
+echo "Name: {$product4->name}</br>";
+echo "Price: {$product4->price}</br>";
 
-$product5 = new Products(Permeable Shower Curtain, 12.95);
+$product5 = new Products("Permeable Shower Curtain", 12.95);
 $product5->getInfo();
-echo "Name: {$this->name}</br>";
-echo "Price: {$this->price}</br>";
+echo "Name: {$product5->name}</br>";
+echo "Price: {$product5->price}</br>";
 
 
 $totalValue = 0;
