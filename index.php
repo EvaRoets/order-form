@@ -12,7 +12,6 @@ error_reporting(E_ALL);
 
 // We are going to use session variables so we need to enable sessions
 session_start();
-
 // Add classes
 require "Products.php";
 require "Contact.php";
@@ -33,6 +32,25 @@ function whatIsHappening()
 }
 
 whatIsHappening();
+
+if(!empty($_GET)){
+    foreach ($_GET as $key=>$get){
+        if(!in_array($key, ["order"])){ //to send only allowed keys in $_GET
+            unset($_GET[$key]);
+        }
+    }
+
+    if(!in_array($_GET["order"], ['food', 'drinks'])){  //to send only allowed values in 'order'
+        unset($_GET['order']);
+    }
+}
+
+$order = $_GET['order'] ?? 'drinks';
+
+
+
+
+
 // Provide some products (you may overwrite the example)
 $products = [
     new Products("Goldfish Walker", 34.99),
@@ -42,13 +60,13 @@ $products = [
     new Products("Permeable Shower Curtain", 12.95),
 ];
 
-$products = [
-    new Products("Time", 1),
-    new Products("Sunny Days", 2),
-    new Products("Purpose of Life", 3),
-    new Products("Inner Peace", 5),
-    new Products("Wisdom", 5),
-];
+//$products = [
+//    new Products("Time", 1),
+//    new Products("Sunny Days", 2),
+//    new Products("Purpose of Life", 3),
+//    new Products("Inner Peace", 5),
+//    new Products("Wisdom", 5),
+//];
 
 $products[0]->getInfo();
 $products[1]->getInfo();
@@ -56,11 +74,11 @@ $products[2]->getInfo();
 $products[3]->getInfo();
 $products[4]->getInfo();
 
-$products[5]->getInfo();
-$products[6]->getInfo();
-$products[7]->getInfo();
-$products[8]->getInfo();
-$products[9]->getInfo();
+//$products[5]->getInfo();
+//$products[6]->getInfo();
+//$products[7]->getInfo();
+//$products[8]->getInfo();
+//$products[9]->getInfo();
 
 $totalValue = 0;
 
@@ -179,14 +197,7 @@ echo $form_view;
 //STEP 4 EXPANDING DUE TO SUCCESS
 //TODO Read about get_variables and what you can do with it.
 //TODO Find commented navigation and activate it. Tweak the content for your own store
-//TODO Make a second category of products in a new array
 
-// Time
-// Manners
-// Sunny Days
-// Purpose of Life
-// Inner Peace
-// Wisdom
 
 //TODO make navigation toggle between the two product categories
 
