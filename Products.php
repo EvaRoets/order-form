@@ -12,8 +12,8 @@ class Products
     }
     public function getInfo()
     {
-        echo "Name: {$this->name}</br>";
-        echo "Price: {$this->price}</br>";
+        return $this->name;
+        return $this->price;
     }
 
 }

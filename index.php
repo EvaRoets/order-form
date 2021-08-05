@@ -41,13 +41,29 @@ whatIsHappening();
 //    ["name" => "Permeable Shower Curtain", "price" => 12.95],
 //];
 $product1 = new Products(Goldfish Walker, 34.99);
+$product1->getInfo();
+echo "Name: {$this->name}</br>";
+echo "Price: {$this->price}</br>";
+
 $product2 = new Products(Shoe Umbrella, 8.95);
+$product2->getInfo();
+echo "Name: {$this->name}</br>";
+echo "Price: {$this->price}</br>";
+
 $product3 = new Products(Diet Water, 1.8);
+$product3->getInfo();
+echo "Name: {$this->name}</br>";
+echo "Price: {$this->price}</br>";
+
 $product4 = new Products(Gas Powered Flashlight, 14.5);
+$product4->getInfo();
+echo "Name: {$this->name}</br>";
+echo "Price: {$this->price}</br>";
+
 $product5 = new Products(Permeable Shower Curtain, 12.95);
-
-
-
+$product5->getInfo();
+echo "Name: {$this->name}</br>";
+echo "Price: {$this->price}</br>";
 
 
 $totalValue = 0;
