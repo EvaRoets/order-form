@@ -34,14 +34,6 @@ function whatIsHappening()
 
 whatIsHappening();
 // Provide some products (you may overwrite the example)
-//$products = [
-//    ["name" => "Goldfish Walker", "price" => 34.99],
-//    ["name" => "Shoe Umbrella", "price" => 8.95],
-//    ["name" => "Diet Water", "price" => 1.8],
-//    ["name" => "Gas Powered Flashlight", "price" => 14.5],
-//    ["name" => "Permeable Shower Curtain", "price" => 12.95],
-//];
-
 $products = [
     new Products("Goldfish Walker", 34.99),
     new Products("Shoe Umbrella", 8.95),
@@ -50,25 +42,25 @@ $products = [
     new Products("Permeable Shower Curtain", 12.95),
 ];
 
+$products = [
+    new Products("Time", 1),
+    new Products("Sunny Days", 2),
+    new Products("Purpose of Life", 3),
+    new Products("Inner Peace", 5),
+    new Products("Wisdom", 5),
+];
+
 $products[0]->getInfo();
 $products[1]->getInfo();
 $products[2]->getInfo();
 $products[3]->getInfo();
 $products[4]->getInfo();
 
-//$product1 = new Products("Goldfish Walker", 34.99);
-//$product2 = new Products("Shoe Umbrella", 8.95);
-//$product3 = new Products("Diet Water", 1.8);
-//$product4 = new Products("Gas Powered Flashlight", 14.5);
-//$product5 = new Products("Permeable Shower Curtain", 12.95);
-//
-//$products = [
-//    $product1->getInfo(),
-//    $product2->getInfo(),
-//    $product3->getInfo(),
-//    $product4->getInfo(),
-//    $product5->getInfo(),
-//];
+$products[5]->getInfo();
+$products[6]->getInfo();
+$products[7]->getInfo();
+$products[8]->getInfo();
+$products[9]->getInfo();
 
 $totalValue = 0;
 
