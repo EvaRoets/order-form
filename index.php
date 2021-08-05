@@ -67,7 +67,6 @@ $product5->getInfo();
 echo "Name: {$product5->name}</br>";
 echo "Price: {$product5->price}</br>";
 
-
 $totalValue = 0;
 
 function validate()

@@ -13,7 +13,7 @@ class Products
     public function getInfo()
     {
         return $this->name;
-        return $this->price;
+        return number_format($this->price, 2);
     }
 
 }
