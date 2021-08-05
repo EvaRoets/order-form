@@ -11,10 +11,4 @@ class Products
         $this->price = $price;
     }
 
-    public function getInfo()
-    {
-        echo "Name: $this->name</br>";
-        echo "Price: $this->price</br>";
-    }
-
 }

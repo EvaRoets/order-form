@@ -28,12 +28,11 @@ class Contacts
         return $this->order;
 
 
-
     }
 
 }
 
-?>
+
 
 
 

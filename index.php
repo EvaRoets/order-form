@@ -28,38 +28,41 @@ function whatIsHappening()
     var_dump($_COOKIE);
     echo '<h2>$_SESSION</h2>';
     var_dump($_SESSION);
+    echo '<h2>$_SERVER</h2>';
+    var_dump($_SERVER["REQUEST_URI"]);
     var_dump("</pre>");
 }
+
 whatIsHappening();
 
 // Provide some products (you may overwrite the example)
+$products1 = new Products("Goldfish Walker", 34.99);
+$products2 = new Products("Shoe Umbrella", 8.95);
+$products3 = new Products("Diet Water", 1.8);
+$products4 = new Products("Gas Powered Flashlight", 14.5);
+$products5 = new Products("Permeable Shower Curtain", 12.95);
+
+$products6 = new Products("Time", 1);
+$products7 = new Products("Sunny Days", 2);
+$products8 = new Products("Purpose of Life", 3);
+$products9 = new Products("Inner Peace", 5);
+$products10 = new Products("Wisdom", 5);
+
 $products1 = [
-    new Products("Goldfish Walker", 34.99),
-    new Products("Shoe Umbrella", 8.95),
-    new Products("Diet Water", 1.8),
-    new Products("Gas Powered Flashlight", 14.5),
-    new Products("Permeable Shower Curtain", 12.95),
+    $products1,
+    $products2,
+    $products3,
+    $products4,
+    $products5,
 ];
 
-//$products2 = [
-//    new Products("Time", 1),
-//    new Products("Sunny Days", 2),
-//    new Products("Purpose of Life", 3),
-//    new Products("Inner Peace", 5),
-//    new Products("Wisdom", 5),
-//];
-
-$products1[0]->getInfo();
-$products1[1]->getInfo();
-$products1[2]->getInfo();
-$products1[3]->getInfo();
-$products1[4]->getInfo();
-
-//$products2[0]->getInfo();
-//$products2[1]->getInfo();
-//$products2[2]->getInfo();
-//$products2[3]->getInfo();
-//$products2[4]->getInfo();
+$products2 = [
+    $products6,
+    $products7,
+    $products8,
+    $products9,
+    $products10,
+];
 
 $totalValue = 0;
 
@@ -133,7 +136,7 @@ function handleForm($products, &$totalValue)
     } elseif (empty($invalidFields)) {
         //Form related tasks (step 1)
         //display selected products and address data (alert box - bootstrap): message
-        $productNumbers = array_keys($_POST["products1"]); //TODO check how to look thru class array
+        $productNumbers = array_keys($_POST["products"]); //TODO check how to look thru class array
         $productNames = [];
         foreach ($productNumbers as $productNumber) {
             $productNames[] = $products[$productNumber]->name;
@@ -169,7 +172,7 @@ function handleForm($products, &$totalValue)
 $formSubmitted = !empty($_POST); // Check if form is empty
 $confirmationMsg = [];
 if ($formSubmitted) {
-    $confirmationMsg = handleForm($products1,$totalValue);
+    $confirmationMsg = handleForm($products1, $totalValue);
 }
 
 require "form-view.php"; // includes and evaluates the specified file
