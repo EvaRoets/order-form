@@ -13,7 +13,7 @@ error_reporting(E_ALL);
 // We are going to use session variables so we need to enable sessions
 session_start();
 
-// Add classes to replace arrays
+// Add classes
 require "Products.php";
 require "Contact.php";
 
@@ -42,19 +42,33 @@ whatIsHappening();
 //    ["name" => "Permeable Shower Curtain", "price" => 12.95],
 //];
 
-$product1 = new Products("Goldfish Walker", 34.99);
-$product2 = new Products("Shoe Umbrella", 8.95);
-$product3 = new Products("Diet Water", 1.8);
-$product4 = new Products("Gas Powered Flashlight", 14.5);
-$product5 = new Products("Permeable Shower Curtain", 12.95);
-
 $products = [
-    $product1->getInfo(),
-    $product2->getInfo(),
-    $product3->getInfo(),
-    $product4->getInfo(),
-    $product5->getInfo(),
+    new Products("Goldfish Walker", 34.99),
+    new Products("Shoe Umbrella", 8.95),
+    new Products("Diet Water", 1.8),
+    new Products("Gas Powered Flashlight", 14.5),
+    new Products("Permeable Shower Curtain", 12.95),
 ];
+
+$products[0]->getInfo();
+$products[1]->getInfo();
+$products[2]->getInfo();
+$products[3]->getInfo();
+$products[4]->getInfo();
+
+//$product1 = new Products("Goldfish Walker", 34.99);
+//$product2 = new Products("Shoe Umbrella", 8.95);
+//$product3 = new Products("Diet Water", 1.8);
+//$product4 = new Products("Gas Powered Flashlight", 14.5);
+//$product5 = new Products("Permeable Shower Curtain", 12.95);
+//
+//$products = [
+//    $product1->getInfo(),
+//    $product2->getInfo(),
+//    $product3->getInfo(),
+//    $product4->getInfo(),
+//    $product5->getInfo(),
+//];
 
 $totalValue = 0;
 
