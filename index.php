@@ -33,13 +33,22 @@ function whatIsHappening()
 
 whatIsHappening();
 // Provide some products (you may overwrite the example)
-$products = [
-    ["name" => "Goldfish Walker", "price" => 34.99],
-    ["name" => "Shoe Umbrella", "price" => 8.95],
-    ["name" => "Diet Water", "price" => 1.8],
-    ["name" => "Gas Powered Flashlight", "price" => 14.5],
-    ["name" => "Permeable Shower Curtain", "price" => 12.95],
-];
+//$products = [
+//    ["name" => "Goldfish Walker", "price" => 34.99],
+//    ["name" => "Shoe Umbrella", "price" => 8.95],
+//    ["name" => "Diet Water", "price" => 1.8],
+//    ["name" => "Gas Powered Flashlight", "price" => 14.5],
+//    ["name" => "Permeable Shower Curtain", "price" => 12.95],
+//];
+$product1 = new Products(Goldfish Walker, 34.99);
+$product2 = new Products(Shoe Umbrella, 8.95);
+$product3 = new Products(Diet Water, 1.8);
+$product4 = new Products(Gas Powered Flashlight, 14.5);
+$product5 = new Products(Permeable Shower Curtain, 12.95);
+
+
+
+
 
 $totalValue = 0;
 
