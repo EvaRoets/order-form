@@ -7,7 +7,6 @@ class Order
     private int $streetNumber;
     private int $zipcode;
     private string $city;
-//    public string $order;
 
     function __construct(string $email, string $street, int $streetNumber, int $zipcode, string $city)
     {
@@ -16,7 +15,6 @@ class Order
         $this->streetNumber = $streetNumber;
         $this->zipcode = $zipcode;
         $this->city = $city;
-//        $this->order = $order;
     }
 
     public function getEmail()
@@ -43,11 +41,6 @@ class Order
     {
         return $this->city;
     }
-
-//    public function getOrder()
-//    {
-//        return $this->order;
-//    }
 
     public function confirmationMsg($productNames)
     {

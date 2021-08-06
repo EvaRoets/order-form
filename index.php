@@ -152,11 +152,11 @@ function handleForm($products, &$totalValue)
         $order = new Order ($email, $street, (int)$streetNumber, (int)$zipcode, $city);
 
         //On submit save data in session
-        $_SESSION["email"] = $email;
-        $_SESSION["street"] = $street;
-        $_SESSION["streetnumber"] = $streetNumber;
-        $_SESSION["city"] = $city;
-        $_SESSION["zipcode"] = $zipcode;
+        $_SESSION["email"] = $order->getEmail();
+        $_SESSION["street"] = $order->getStreet();
+        $_SESSION["streetnumber"] = $order->getStreetNumber();
+        $_SESSION["city"] = $order->getCity();
+        $_SESSION["zipcode"] = $order->getZipCode();
 
         unset($email, $street, $streetNumber, $city, $zipcode, $products);
         return "<div class='alert alert-success'>" . $order->confirmationMsg($productNames) . "</div>";
