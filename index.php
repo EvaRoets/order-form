@@ -149,11 +149,7 @@ function handleForm($products, &$totalValue)
         $zipcode = htmlspecialchars($_POST["zipcode"]);
         $city = htmlspecialchars($_POST["city"]);
 
-        $message = "You picked the following useless products : <br> " . implode(", ", $productNames);
-        $message .= "<br>";
-        $message .= "Your email address : " . $email;
-        $message .= "<br>";
-        $message .= "Your address : " . $street . " " . $streetNumber . ", " . $zipcode . " " . $city;
+        $order = new Order ($email, $street, (int)$streetNumber, (int)$zipcode, $city);
 
         //On submit save data in session
         $_SESSION["email"] = $email;
@@ -163,7 +159,7 @@ function handleForm($products, &$totalValue)
         $_SESSION["zipcode"] = $zipcode;
 
         unset($email, $street, $streetNumber, $city, $zipcode, $products);
-        return "<div class='alert alert-success'>" . $message . "</div>";
+        return "<div class='alert alert-success'>" . $order->confirmationMsg($productNames) . "</div>";
     }
 
 }
