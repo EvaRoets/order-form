@@ -143,13 +143,8 @@ function handleForm($products, &$totalValue)
             $totalValue = $totalValue + $products[$productNumber]->price;
         }
 
-        $email = htmlspecialchars($_POST["email"]);
-        $street = htmlspecialchars($_POST["street"]);
-        $streetNumber = htmlspecialchars($_POST["street"]);
-        $zipcode = htmlspecialchars($_POST["zipcode"]);
-        $city = htmlspecialchars($_POST["city"]);
+        $order = new Order ($_POST["email"], $_POST["street"], (int) $_POST["streetnumber"], (int)$_POST["zipcode"], $_POST["city"]);
 
-        $order = new Order ($email, $street, (int)$streetNumber, (int)$zipcode, $city);
 
         //On submit save data in session
         $_SESSION["email"] = $order->getEmail();
@@ -158,7 +153,6 @@ function handleForm($products, &$totalValue)
         $_SESSION["city"] = $order->getCity();
         $_SESSION["zipcode"] = $order->getZipCode();
 
-        unset($email, $street, $streetNumber, $city, $zipcode, $products);
         return "<div class='alert alert-success'>" . $order->confirmationMsg($productNames) . "</div>";
     }
 

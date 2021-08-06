@@ -10,11 +10,11 @@ class Order
 
     function __construct(string $email, string $street, int $streetNumber, int $zipcode, string $city)
     {
-        $this->email = $email;
-        $this->street = $street;
-        $this->streetNumber = $streetNumber;
-        $this->zipcode = $zipcode;
-        $this->city = $city;
+        $this->email = htmlspecialchars($email);
+        $this->street = htmlspecialchars($street);
+        $this->streetNumber = htmlspecialchars($streetNumber);
+        $this->zipcode = htmlspecialchars($zipcode);
+        $this->city = htmlspecialchars($city);
     }
 
     public function getEmail()
