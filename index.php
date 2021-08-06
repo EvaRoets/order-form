@@ -15,7 +15,6 @@ session_start();
 require "Product.php";
 require "Order.php";
 require "product-list.php";
-require "SelectedProduct.php";
 
 // Enable overview of these variables
 function whatIsHappening()
@@ -54,6 +53,16 @@ $products2 = [
 ];
 
 $totalValue = 0;
+
+// TODO: remove commented if
+//if (basename($_SERVER['REQUEST_URI']) == "/the-mountain/order-form/") || basename($_SERVER['REQUEST_URI']) == "/the-mountain/order-form/?products1") {
+if (isset($_GET['products1'])) {
+    $uselessProductsSelected = true;
+    $products = $products1;
+} else {
+    $uselessProductsSelected = false;
+    $products = $products2;
+}
 
 // Validate submitted field values
 function validate()
@@ -118,20 +127,21 @@ function handleForm($products, &$totalValue)
             $errorMsg .= "Zip code can only have numeric values.";
         }
         // Display any empty or invalid data with corresponding error message
-        return "<div class='alert alert-danger'>" . $errorMsg . "</div>";
+        return [
+            "order" => null,
+            "message" => "<div class='alert alert-danger'>" . $errorMsg . "</div>",
+        ];
 
     } elseif (empty($invalidFields)) {
         // Loop through product arrays
         $productNumbers = array_keys($_POST["products"]);
-        $productNames = [];
+        $orderedProducts = [];
         foreach ($productNumbers as $productNumber) {
-            // Set selected product name and product price
-            $selectedProduct = new SelectedProduct("", (string)$productNames[] = $products[$productNumber]->name, (float)$totalValue = $totalValue + $products[$productNumber]->price);
+            $orderedProducts[] = $products[$productNumber];
         }
 
         // Set address data
-        $order = new Order ($_POST["email"], $_POST["street"], (int)$_POST["streetnumber"], (int)$_POST["zipcode"], $_POST["city"]);
-    );
+        $order = new Order ($_POST["email"], $_POST["street"], (int)$_POST["streetnumber"], (int)$_POST["zipcode"], $_POST["city"], $orderedProducts);
 
         // Save data in session on submit to keep it displayed after error message
         $_SESSION["email"] = $order->getEmail();
@@ -139,6 +149,12 @@ function handleForm($products, &$totalValue)
         $_SESSION["streetnumber"] = $order->getStreetNumber();
         $_SESSION["city"] = $order->getCity();
         $_SESSION["zipcode"] = $order->getZipCode();
+
+        // Return selected products and address data
+        return [
+            "order" => $order,
+            "message" => "<div class='alert alert-success'>" . $order->confirmationMsg() . "</div>",
+        ];
     }
 
 }
@@ -147,7 +163,9 @@ function handleForm($products, &$totalValue)
 $formSubmitted = !empty($_POST);
 $confirmationMsg = [];
 if ($formSubmitted) {
-    $confirmationMsg = handleForm($products1, $totalValue);
+    $result = handleForm($products, $totalValue);
+    $confirmationMsg = $result["message"];
+    $order = $result["order"];
 }
 
 // Includes and evaluates the specified file
@@ -164,5 +182,3 @@ require "form-view.php";
 //TODO improve validation with html and JS
 
 //TODO Allow user to specify how much he or she wants to buy of a certain products
-
-

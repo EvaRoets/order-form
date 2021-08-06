@@ -44,8 +44,7 @@
 
         <fieldset>
             <legend>Products</legend>
-            <?php if (basename($_SERVER['REQUEST_URI'] == "/the-mountain/order-form/")
-                || basename($_SERVER['REQUEST_URI'] == "/the-mountain/order-form/?products1")) : ?>
+            <?php if ($uselessProductsSelected) : ?>
                 <?php foreach ($products1 as $i => $product): ?>
                     <label>
                         <input type="checkbox"
@@ -53,7 +52,7 @@
                                name="products[<?= $i ?>]"/>
                         <?= $product->name ?> - <?= $product->formattedPrice() ?></label><br/>
                 <?php endforeach; ?>
-            <?php elseif (basename($_SERVER['REQUEST_URI'] == "/the-mountain/order-form/?products2")) : ?>
+            <?php else : ?>
                 <?php foreach ($products2 as $i => $product): ?>
                     <label>
                         <input type="checkbox"
@@ -132,7 +131,6 @@
         <button type="submit" class="btn btn-primary">Order!</button>
     </form>
 
-    <footer><?= $SelectedProduct->totalPrice() ?></footer>
 </div>
 <style>
     footer {
