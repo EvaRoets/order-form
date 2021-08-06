@@ -84,7 +84,7 @@ function validate()
     return $invalidFields;
 }
 
-function handleForm($products1, $products2, &$totalValue)
+function handleForm($products, &$totalValue)
 {
     // Validation (return invalidly submitted fields)
     $invalidFields = validate();
@@ -126,11 +126,8 @@ function handleForm($products1, $products2, &$totalValue)
         $productNames = [];
         foreach ($productNumbers as $productNumber) {
             // Set selected product name and product price
-            $productNames[] = $products1[$productNumber]->name;
-            $totalValue = $totalValue + $products1[$productNumber]->price;
-
-            $productNames[] = $products2[$productNumber]->name;
-            $totalValue = $totalValue + $products2[$productNumber]->price;
+            $productNames[] = $products[$productNumber]->name;
+            $totalValue = $totalValue + $products[$productNumber]->price;
         }
 
         // Set address data
@@ -153,7 +150,7 @@ function handleForm($products1, $products2, &$totalValue)
 $formSubmitted = !empty($_POST);
 $confirmationMsg = [];
 if ($formSubmitted) {
-    $confirmationMsg = handleForm($products1, $products2, $totalValue);
+    $confirmationMsg = handleForm($products1, $totalValue);
 }
 
 // Includes and evaluates the specified file

@@ -42,8 +42,8 @@
 
         <fieldset>
             <legend>Products</legend>
-            <?php if (basename($_SERVER['REQUEST_URI'] == "/the-mountain/order-form/?products1")
-                || basename($_SERVER['REQUEST_URI'] == "/the-mountain/order-form/")) : ?>
+            <?php if (basename($_SERVER['REQUEST_URI'] == "/the-mountain/order-form/")
+                || basename($_SERVER['REQUEST_URI'] == "/the-mountain/order-form/?products1")) : ?>
                 <?php foreach ($products1 as $i => $product): ?>
                     <label>
                         <input type="checkbox"
