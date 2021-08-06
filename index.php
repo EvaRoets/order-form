@@ -15,6 +15,7 @@ session_start();
 // Add classes
 require "Product.php";
 require "Order.php";
+require "SelectedProduct.php";
 
 // Use this function when you need to need an overview of these variables
 function whatIsHappening()
@@ -144,7 +145,6 @@ function handleForm($products, &$totalValue)
         }
 
         $order = new Order ($_POST["email"], $_POST["street"], (int) $_POST["streetnumber"], (int)$_POST["zipcode"], $_POST["city"]);
-
 
         //On submit save data in session
         $_SESSION["email"] = $order->getEmail();
