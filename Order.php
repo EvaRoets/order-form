@@ -1,6 +1,6 @@
 <?php
 
-class Contacts
+class Order
 {
     private string $email;
     private string $street;
@@ -48,8 +48,6 @@ class Contacts
     {
         return $this->order;
     }
-
-
 }
 
 

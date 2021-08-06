@@ -48,7 +48,7 @@
                     <label>
                         <?php // <?p= is equal to <?php echo ?>
                         <input type="checkbox" value="1" name="products[<?php echo $i ?>]"/> <?= $product->name ?>
-                        - &euro;<?= number_format($product->price, 2) ?></label><br/>
+                        - &euro;<?= $product->formattedPrice() ?></label><br/>
                 <?php endforeach; ?>
 
             <?php elseif (basename($_SERVER['REQUEST_URI'] == "/the-mountain/order-form/?products2")) : ?>

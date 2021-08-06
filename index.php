@@ -13,8 +13,8 @@ error_reporting(E_ALL);
 // We are going to use session variables so we need to enable sessions
 session_start();
 // Add classes
-require "Products.php";
-require "Orders.php";
+require "Product.php";
+require "Order.php";
 
 // Use this function when you need to need an overview of these variables
 function whatIsHappening()
@@ -36,17 +36,17 @@ function whatIsHappening()
 whatIsHappening();
 
 // Provide some products (you may overwrite the example)
-$products1 = new Products("Goldfish Walker", 34.99);
-$products2 = new Products("Shoe Umbrella", 8.95);
-$products3 = new Products("Diet Water", 1.8);
-$products4 = new Products("Gas Powered Flashlight", 14.5);
-$products5 = new Products("Permeable Shower Curtain", 12.95);
+$products1 = new Product("Goldfish Walker", 34.99);
+$products2 = new Product("Shoe Umbrella", 8.95);
+$products3 = new Product("Diet Water", 1.8);
+$products4 = new Product("Gas Powered Flashlight", 14.5);
+$products5 = new Product("Permeable Shower Curtain", 12.95);
 
-$products6 = new Products("Time", 1);
-$products7 = new Products("Sunny Days", 2);
-$products8 = new Products("Purpose of Life", 3);
-$products9 = new Products("Inner Peace", 4);
-$products10 = new Products("Wisdom", 5);
+$products6 = new Product("Time", 1);
+$products7 = new Product("Sunny Days", 2);
+$products8 = new Product("Purpose of Life", 3);
+$products9 = new Product("Inner Peace", 4);
+$products10 = new Product("Wisdom", 5);
 
 $products1 = [
     $products1,
