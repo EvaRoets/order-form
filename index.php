@@ -1,8 +1,6 @@
 <?php
-// This file is your starting point (= since it's the index)
-// It will contain most of the logic, to prevent making a messy mix in the html
 
-// This line makes PHP behave in a more strict way
+// Makes PHP behave in a more strict way
 declare(strict_types=1);
 
 // Enable error messages
@@ -10,14 +8,15 @@ ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
-// We are going to use session variables so we need to enable sessions
+// Enable sessions
 session_start();
+
 // Add classes
 require "Product.php";
 require "Order.php";
 require "SelectedProduct.php";
 
-// Use this function when you need to need an overview of these variables
+// Enable overview of these variables
 function whatIsHappening()
 {
     var_dump("<pre>");
@@ -26,7 +25,7 @@ function whatIsHappening()
     echo '<h2>$_POST</h2>';
     var_dump($_POST);
     echo '<h2>$_COOKIE</h2>';
-//    var_dump($_COOKIE);
+    var_dump($_COOKIE);
     echo '<h2>$_SESSION</h2>';
     var_dump($_SESSION);
     echo '<h2>$_SERVER</h2>';
@@ -36,7 +35,7 @@ function whatIsHappening()
 
 whatIsHappening();
 
-// Provide some products (you may overwrite the example)
+// List products
 $products1 = new Product("Goldfish Walker", 34.99);
 $products2 = new Product("Shoe Umbrella", 8.95);
 $products3 = new Product("Diet Water", 1.8);
@@ -67,12 +66,12 @@ $products2 = [
 
 $totalValue = 0;
 
+// Validate submitted field values
 function validate()
 {
-    // This function will send a list of invalid fields back
+    // Create and return invalid fields array
     $invalidFields = [];
     if (empty($_POST["email"])) {
-        //if (!isset($_POST["email"])) {
         array_push($invalidFields, "email");
     }
     if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
@@ -96,18 +95,16 @@ function validate()
     return $invalidFields;
 }
 
-function handleForm($products, &$totalValue)
+function handleForm($products1, $products2, &$totalValue)
 {
-    // Validation (step 2)
+    // Validation (return invalidly submitted fields)
     $invalidFields = validate();
+    // Handle errors caused by invalidly submitted fields
     if (!empty($invalidFields)) {
-        // Handle errors
-        // Check required fields are not empty
         if (in_array("email", $invalidFields)) {
             $errorMsg = "Please fill out your e-mail address.";
             $errorMsg .= "<br>";
-
-        } // Check Email address is valid
+        } // Check if email address is valid
         elseif (in_array("emailInvalid", $invalidFields)) {
             $errorMsg = "Invalid e-mail format.";
             $errorMsg .= "<br>";
@@ -127,49 +124,52 @@ function handleForm($products, &$totalValue)
         if (in_array("zipcode", $invalidFields)) {
             $errorMsg .= "Please fill out your zip code.";
             $errorMsg .= "<br>";
-        } //check zip code are only numbers
+        } // Check if zip code consists of only numbers
         elseif (in_array("zipcodeInvalid", $invalidFields)) {
             $errorMsg .= "Zip code can only have numeric values.";
         }
-        //Show any problems (empty or invalid data) with the fields at the top of the form. Tip: use the bootstrap alerts for inspiration.
+        // Display any empty or invalid data with corresponding error message
         return "<div class='alert alert-danger'>" . $errorMsg . "</div>";
 
     } elseif (empty($invalidFields)) {
-        //Form related tasks (step 1)
-        //display selected products and address data (alert box - bootstrap): message
+        // Loop through product arrays
         $productNumbers = array_keys($_POST["products"]);
         $productNames = [];
         foreach ($productNumbers as $productNumber) {
-            $productNames[] = $products[$productNumber]->name;
-            $totalValue = $totalValue + $products[$productNumber]->price;
+            // Set selected product name and product price
+            $productNames[] = $products1[$productNumber]->name;
+            $totalValue = $totalValue + $products1[$productNumber]->price;
+
+            $productNames[] = $products2[$productNumber]->name;
+            $totalValue = $totalValue + $products2[$productNumber]->price;
         }
 
+        // Set address data
         $order = new Order ($_POST["email"], $_POST["street"], (int) $_POST["streetnumber"], (int)$_POST["zipcode"], $_POST["city"]);
 
-        //On submit save data in session
+        // Save data in session on submit to keep it displayed after error message
         $_SESSION["email"] = $order->getEmail();
         $_SESSION["street"] = $order->getStreet();
         $_SESSION["streetnumber"] = $order->getStreetNumber();
         $_SESSION["city"] = $order->getCity();
         $_SESSION["zipcode"] = $order->getZipCode();
 
+        // Return selected products and address data
         return "<div class='alert alert-success'>" . $order->confirmationMsg($productNames) . "</div>";
     }
 
 }
 
-//replace this if by an actual check
-$formSubmitted = !empty($_POST); // Check if form is empty
+// Check if form is not empty when submitted
+$formSubmitted = !empty($_POST);
 $confirmationMsg = [];
 if ($formSubmitted) {
-    $confirmationMsg = handleForm($products1, $totalValue);
+    $confirmationMsg = handleForm($products1, $products2, $totalValue);
 }
 
-require "form-view.php"; // includes and evaluates the specified file
+// Includes and evaluates the specified file
+require "form-view.php";
 
-//STEP 4 EXPANDING DUE TO SUCCESS
-//TODO Find commented navigation and activate it. Tweak the content for your own store
-//TODO make navigation toggle between the two product categories
 
 //Nice-to-have features
 //TODO Show the expected delivery time in the confirmation message (2h by default).
