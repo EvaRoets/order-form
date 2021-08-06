@@ -12,9 +12,9 @@ error_reporting(E_ALL);
 session_start();
 
 // Add classes
-require "Product.php";
-require "Order.php";
-require "product-list.php";
+require "php/Product.php";
+require "php/Order.php";
+require "php/product-list.php";
 
 // Enable overview of these variables
 //function whatIsHappening()
@@ -169,7 +169,7 @@ if ($formSubmitted) {
 }
 
 // Includes and evaluates the specified file
-require "form-view.php";
+require "php/form-view.php";
 
 //Nice-to-have features
 //TODO Show the expected delivery time in the confirmation message (2h by default).
