@@ -1,0 +1,23 @@
+/* color scheme */
+h2 {color: #F80B28;}
+h3 {color: #E2C4C6;}
+h4 {color: #FFF;}
+h5 {color: #000;}
+
+/*responsiveness*/
+@media only screen and (max-width: 479px) {
+    body {
+
+    }
+
+    .container {
+    }
+
+    h1 {
+
+    }
+
+    nav {
+
+    }
+}

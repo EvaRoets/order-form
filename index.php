@@ -14,8 +14,8 @@ session_start();
 // Add classes
 require "Product.php";
 require "Order.php";
-require "SelectedProduct.php";
 require "product-list.php";
+//require "SelectedProduct.php";
 
 // Enable overview of these variables
 function whatIsHappening()
@@ -140,8 +140,6 @@ function handleForm($products, &$totalValue)
         $_SESSION["city"] = $order->getCity();
         $_SESSION["zipcode"] = $order->getZipCode();
 
-        // Return selected products and address data
-        return "<div class='alert alert-success'>" . $order->confirmationMsg($productNames) . "</div>";
     }
 
 }
@@ -155,7 +153,6 @@ if ($formSubmitted) {
 
 // Includes and evaluates the specified file
 require "form-view.php";
-
 
 //Nice-to-have features
 //TODO Show the expected delivery time in the confirmation message (2h by default).
