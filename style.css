@@ -7,7 +7,11 @@ h5 {color: #000;}
 /*responsiveness*/
 @media only screen and (max-width: 479px) {
     body {
-
+        display: grid;
+        align-items: center;
+        justify-content: center;
+        background: url("images/background.jpg") repeat fixed;
+        background-size: cover;
     }
 
     .container {

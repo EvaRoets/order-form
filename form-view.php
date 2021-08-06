@@ -71,7 +71,7 @@
                     <label for="email">E-mail:</label>
                     <input type="email" id="email" name="email" class="form-control"
                            value="<?php
-                           if (isset($_SESSION["email"])) {
+                           if (isset($_SESSION)) {
                                echo $_SESSION["email"];
                            } else {
                                echo "";
@@ -132,7 +132,7 @@
         <button type="submit" class="btn btn-primary">Order!</button>
     </form>
 
-    <footer>You already ordered <strong>&euro; <?= $totalValue ?></strong> in useless and/or priceless products.</footer>
+    <footer><?= $SelectedProduct->totalPrice() ?></footer>
 </div>
 <style>
     footer {

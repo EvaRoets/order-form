@@ -15,7 +15,7 @@ session_start();
 require "Product.php";
 require "Order.php";
 require "product-list.php";
-//require "SelectedProduct.php";
+require "SelectedProduct.php";
 
 // Enable overview of these variables
 function whatIsHappening()
@@ -126,12 +126,12 @@ function handleForm($products, &$totalValue)
         $productNames = [];
         foreach ($productNumbers as $productNumber) {
             // Set selected product name and product price
-            $productNames[] = $products[$productNumber]->name;
-            $totalValue = $totalValue + $products[$productNumber]->price;
+            $selectedProduct = new SelectedProduct("", (string)$productNames[] = $products[$productNumber]->name, (float)$totalValue = $totalValue + $products[$productNumber]->price);
         }
 
         // Set address data
         $order = new Order ($_POST["email"], $_POST["street"], (int)$_POST["streetnumber"], (int)$_POST["zipcode"], $_POST["city"]);
+    );
 
         // Save data in session on submit to keep it displayed after error message
         $_SESSION["email"] = $order->getEmail();
@@ -139,7 +139,6 @@ function handleForm($products, &$totalValue)
         $_SESSION["streetnumber"] = $order->getStreetNumber();
         $_SESSION["city"] = $order->getCity();
         $_SESSION["zipcode"] = $order->getZipCode();
-
     }
 
 }

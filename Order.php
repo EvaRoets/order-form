@@ -42,16 +42,17 @@ class Order
         return $this->city;
     }
 
-    public function confirmationMsg($productNames)
+    public function confirmationMsg()
     {
-        $message = "The following useless and/or priceless product(s) are in your cart: <br>" . implode(", <br>", $productNames) . "<br>";
+//        $message = "The following useless and/or priceless product(s) are in your cart: <br>" . implode(", <br>", $productNames) . "<br>";
         $message .= "<br>";
         $message .= "Your email address : " . $this->email;
         $message .= "<br>";
         $message .= "Your address : " . $this->street . " " . $this->streetNumber . ", " . $this->zipcode . " " . $this->city;
 
         // Return selected products and address data
-        return "<div class='alert alert-success'>" . $this->confirmationMsg($productNames) . "</div>";    }
+        return "<div class='alert alert-success'>" . $SelectedProduct->productsInCart($productNames) . "br" . $this->confirmationMsg() . "</div>";
+    }
 }
 
 
