@@ -67,7 +67,7 @@
             <legend>Address</legend>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="email">E-mail:</label>
+                    <label for="email">E-mail</label>
                     <input type="email" id="email" name="email" class="form-control"
                            value="<?php
                            if (isset($_SESSION)) {
@@ -81,7 +81,7 @@
 
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="street">Street:</label>
+                    <label for="street">Street</label>
                     <input type="text" name="street" id="street" class="form-control"
                            value="<?php
                            if (isset($_SESSION["street"])) {
@@ -92,7 +92,7 @@
                 </div>
 
                 <div class="form-group col-md-6">
-                    <label for="streetnumber">Street number:</label>
+                    <label for="streetnumber">Street number</label>
                     <input type="text" id="streetnumber" name="streetnumber" class="form-control"
                            value="<?php
                            if (isset($_SESSION["streetnumber"])) {
@@ -105,7 +105,7 @@
 
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="city">City:</label>
+                    <label for="city">City</label>
                     <input type="text" id="city" name="city" class="form-control"
                            value="<?php
                            if (isset($_SESSION["city"])) {
@@ -126,9 +126,11 @@
                            } ?>"/>
                 </div>
             </div>
-        </fieldset>
 
+        </fieldset>
+        <div class="divbtn">
         <button type="submit" class="btn">Order!</button>
+        </div>
     </form>
 
 </div>

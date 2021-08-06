@@ -1,106 +1,137 @@
-/* color scheme */
-/*h2 {color: #F80B28;}*/
-/*h3 {color: #E2C4C6;}*/
-/*h4 {color: #FFF;}*/
-/*h5 {color: #000;}*/
+body {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    background: url("images/background.jpg") repeat fixed;
+    background-size: cover;
+}
 
-/*responsiveness*/
-/*@media only screen and (max-width: 479px) {*/
-    body {
-        display: grid;
-        align-items: center;
-        justify-content: center;
-        background: url("images/background.jpg") repeat fixed;
-        background-size: cover;
-    }
+.container {
+    width: 800px;
+    height: fit-content;
+    position: relative;
+    background: inherit;
+    border-radius: 50px;
+    box-shadow: 0 0 1rem #f80b28;
+    overflow: hidden;
+    z-index: 1;
+    margin: 50px;
+    text-align: left;
+    padding: 50px;
+}
 
-    .container {
-        width: fit-content;
-        height: fit-content;
-        position: relative;
-        background: inherit;
-        border-radius: 50px;
-        box-shadow: 0 0 1rem #f80b28;
-        overflow: hidden;
-        z-index: 1;
-        margin: 50px;
-        text-align: left;
-        padding: 50px;
-    }
+.container:before {
+    content: "";
+    position: absolute;
+    background: inherit;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 25px;
+    box-shadow: inset 0 0 2000px #E2C4C6;
+    filter: blur(20px);
+    margin: -20px;
+    z-index: -1;
+}
 
-    .container:before {
-        content: "";
-        position: absolute;
-        background: inherit;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        border-radius: 25px;
-        box-shadow: inset 0 0 2000px #E2C4C6;
-        filter: blur(15px);
-        margin: -20px;
-        z-index: -1;
-    }
+h1 {
+    text-align: center;
+    color: white;
+    font-size: 60px;
+}
 
-    h1 {
-        text-align: center;
-        color: white;
-        font-size: 60px;
-    }
+nav {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    padding: 20px;
+}
 
+.nav-item {
+}
 
-    .nav-item {
-    }
+legend {
+    color: #FFF;
+}
 
-    a {
-        font-size: 25px;
-        color: #FFF;
-        text-decoration: none;
-        background-color: transparent;
-    }
-    a:active {
-        color: #FFF;
-        text-decoration: none;
-        background-color: #f80b28;
-        border-right: 2px;
+label {
+    color: #FFF;
+    font-size: 20px;
+}
 
-    }
-    .btn{
-        color: #FFF;
-        text-decoration: none;
-        background-color: #f80b28;
-        border-right: 2px;
-    }
+a {
+    font-size: 25px;
+    color: #FFF;
+    text-decoration: none;
+    background-color: transparent;
+}
 
-/*}*/
-/*@media only screen and (min-width: 1024px) {*/
-/*    body {*/
-/*        display: grid;*/
-/*        align-items: center;*/
-/*        justify-content: center;*/
-/*        background: url("images/background.jpg") repeat fixed;*/
-/*        background-size: cover;*/
-/*    }*/
+a:hover:active {
+    color: #FFF;
+    text-decoration: none;
+    background-color: #f80b28;
+    border-right: 2px;
 
-/*    .container {*/
-/*        width: fit-content;*/
-/*        height: fit-content;*/
-/*        position: relative;*/
-/*        background: inherit;*/
-/*        border-radius: 25px;*/
-/*        box-shadow: 0 0 1rem #226c85;*/
-/*        overflow: hidden;*/
-/*        z-index: 1;*/
-/*        margin: 150px;*/
-/*        text-align: center;*/
-/*    }*/
-/*    }*/
+}
 
-/*    h1 {*/
+input[type=checkbox] {
+    position: relative;
+    cursor: pointer;
 
-/*    }*/
+}
 
-/*    nav {*/
+input[type=checkbox]:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 0;
+    left: 0;
+    border: 2px solid #f80b28;
+    border-radius: 3px;
+    background-color: white;
 
-/*    }*/
+}
+
+input[type='checkbox']:checked:after {
+    content: "";
+    display: block;
+    width: 5px;
+    height: 10px;
+    border: solid #f80b28;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    position: absolute;
+    top: 2px;
+    left: 6px;
+
+}
+
+.divbtn {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: stretch;
+    justify-content: center;
+}
+
+.btn {
+    color: #FFF;
+    font-size: 30px;
+    text-decoration: none;
+    background-color: #f80b28;
+    border-radius: 20px;
+    padding: 25px;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 25px;
+}
+
+.btn:hover:active {
+    transform: scale(1.5);
+}
