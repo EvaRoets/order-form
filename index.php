@@ -15,6 +15,7 @@ session_start();
 require "Product.php";
 require "Order.php";
 require "SelectedProduct.php";
+require "product-list.php";
 
 // Enable overview of these variables
 //function whatIsHappening()
@@ -36,17 +37,7 @@ require "SelectedProduct.php";
 //whatIsHappening();
 
 // List products
-$products1 = new Product("Goldfish Walker", 34.99);
-$products2 = new Product("Shoe Umbrella", 8.95);
-$products3 = new Product("Diet Water", 1.8);
-$products4 = new Product("Gas Powered Flashlight", 14.5);
-$products5 = new Product("Permeable Shower Curtain", 12.95);
 
-$products6 = new Product("Time", 1);
-$products7 = new Product("Sunny Days", 2);
-$products8 = new Product("Purpose of Life", 3);
-$products9 = new Product("Inner Peace", 4);
-$products10 = new Product("Wisdom", 5);
 
 $products1 = [
     $products1,

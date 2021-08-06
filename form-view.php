@@ -130,7 +130,7 @@
         <button type="submit" class="btn btn-primary">Order!</button>
     </form>
 
-    <footer>You already ordered <strong>&euro; <?= $totalValue ?></strong> in useless products.</footer>
+    <footer>You already ordered <strong>&euro; <?= $totalValue ?></strong> in useless and/or priceless products.</footer>
 </div>
 <style>
     footer {

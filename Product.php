@@ -10,10 +10,10 @@ class Product
         $this->name = $name;
         $this->price = $price;
     }
+
     public function formattedPrice()
     {
-        return "€". number_format($this->price, 2);
+        return "€" . number_format($this->price, 2);
     }
-
 
 }

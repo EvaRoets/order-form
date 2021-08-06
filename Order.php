@@ -44,7 +44,7 @@ class Order
 
     public function confirmationMsg($productNames)
     {
-        $message = "You picked the following useless products : <br> " . implode(", ", $productNames);
+        $message = "You picked the following useless and/or priceless product(s) : <br>" . implode(", <br>", $productNames) . "<br>";
         $message .= "<br>";
         $message .= "Your email address : " . $this->email;
         $message .= "<br>";
