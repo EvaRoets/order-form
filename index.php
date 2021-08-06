@@ -17,23 +17,23 @@ require "Order.php";
 require "SelectedProduct.php";
 
 // Enable overview of these variables
-function whatIsHappening()
-{
-    var_dump("<pre>");
-    echo '<h2>$_GET</h2>';
-    var_dump($_GET);
-    echo '<h2>$_POST</h2>';
-    var_dump($_POST);
-    echo '<h2>$_COOKIE</h2>';
-    var_dump($_COOKIE);
-    echo '<h2>$_SESSION</h2>';
-    var_dump($_SESSION);
-    echo '<h2>$_SERVER</h2>';
-    var_dump($_SERVER["REQUEST_URI"]);
-    var_dump("</pre>");
-}
-
-whatIsHappening();
+//function whatIsHappening()
+//{
+//    var_dump("<pre>");
+//    echo '<h2>$_GET</h2>';
+//    var_dump($_GET);
+//    echo '<h2>$_POST</h2>';
+//    var_dump($_POST);
+//    echo '<h2>$_COOKIE</h2>';
+//    var_dump($_COOKIE);
+//    echo '<h2>$_SESSION</h2>';
+//    var_dump($_SESSION);
+//    echo '<h2>$_SERVER</h2>';
+//    var_dump($_SERVER["REQUEST_URI"]);
+//    var_dump("</pre>");
+//}
+//
+//whatIsHappening();
 
 // List products
 $products1 = new Product("Goldfish Walker", 34.99);
@@ -145,7 +145,7 @@ function handleForm($products1, $products2, &$totalValue)
         }
 
         // Set address data
-        $order = new Order ($_POST["email"], $_POST["street"], (int) $_POST["streetnumber"], (int)$_POST["zipcode"], $_POST["city"]);
+        $order = new Order ($_POST["email"], $_POST["street"], (int)$_POST["streetnumber"], (int)$_POST["zipcode"], $_POST["city"]);
 
         // Save data in session on submit to keep it displayed after error message
         $_SESSION["email"] = $order->getEmail();
