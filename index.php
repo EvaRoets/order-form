@@ -25,7 +25,7 @@ function whatIsHappening()
     echo '<h2>$_POST</h2>';
     var_dump($_POST);
     echo '<h2>$_COOKIE</h2>';
-    var_dump($_COOKIE);
+//    var_dump($_COOKIE);
     echo '<h2>$_SESSION</h2>';
     var_dump($_SESSION);
     echo '<h2>$_SERVER</h2>';
@@ -45,7 +45,7 @@ $products5 = new Products("Permeable Shower Curtain", 12.95);
 $products6 = new Products("Time", 1);
 $products7 = new Products("Sunny Days", 2);
 $products8 = new Products("Purpose of Life", 3);
-$products9 = new Products("Inner Peace", 5);
+$products9 = new Products("Inner Peace", 4);
 $products10 = new Products("Wisdom", 5);
 
 $products1 = [
@@ -136,7 +136,7 @@ function handleForm($products, &$totalValue)
     } elseif (empty($invalidFields)) {
         //Form related tasks (step 1)
         //display selected products and address data (alert box - bootstrap): message
-        $productNumbers = array_keys($_POST["products"]); //TODO check how to look thru class array
+        $productNumbers = array_keys($_POST["products"]);
         $productNames = [];
         foreach ($productNumbers as $productNumber) {
             $productNames[] = $products[$productNumber]->name;
