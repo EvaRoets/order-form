@@ -1,11 +1,11 @@
 /* color scheme */
-h2 {color: #F80B28;}
-h3 {color: #E2C4C6;}
-h4 {color: #FFF;}
-h5 {color: #000;}
+/*h2 {color: #F80B28;}*/
+/*h3 {color: #E2C4C6;}*/
+/*h4 {color: #FFF;}*/
+/*h5 {color: #000;}*/
 
 /*responsiveness*/
-@media only screen and (max-width: 479px) {
+/*@media only screen and (max-width: 479px) {*/
     body {
         display: grid;
         align-items: center;
@@ -15,13 +15,92 @@ h5 {color: #000;}
     }
 
     .container {
+        width: fit-content;
+        height: fit-content;
+        position: relative;
+        background: inherit;
+        border-radius: 50px;
+        box-shadow: 0 0 1rem #f80b28;
+        overflow: hidden;
+        z-index: 1;
+        margin: 50px;
+        text-align: left;
+        padding: 50px;
+    }
+
+    .container:before {
+        content: "";
+        position: absolute;
+        background: inherit;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        border-radius: 25px;
+        box-shadow: inset 0 0 2000px #E2C4C6;
+        filter: blur(15px);
+        margin: -20px;
+        z-index: -1;
     }
 
     h1 {
-
+        text-align: center;
+        color: white;
+        font-size: 60px;
     }
 
-    nav {
+
+    .nav-item {
+    }
+
+    a {
+        font-size: 25px;
+        color: #FFF;
+        text-decoration: none;
+        background-color: transparent;
+    }
+    a:active {
+        color: #FFF;
+        text-decoration: none;
+        background-color: #f80b28;
+        border-right: 2px;
 
     }
-}
+    .btn{
+        color: #FFF;
+        text-decoration: none;
+        background-color: #f80b28;
+        border-right: 2px;
+    }
+
+/*}*/
+/*@media only screen and (min-width: 1024px) {*/
+/*    body {*/
+/*        display: grid;*/
+/*        align-items: center;*/
+/*        justify-content: center;*/
+/*        background: url("images/background.jpg") repeat fixed;*/
+/*        background-size: cover;*/
+/*    }*/
+
+/*    .container {*/
+/*        width: fit-content;*/
+/*        height: fit-content;*/
+/*        position: relative;*/
+/*        background: inherit;*/
+/*        border-radius: 25px;*/
+/*        box-shadow: 0 0 1rem #226c85;*/
+/*        overflow: hidden;*/
+/*        z-index: 1;*/
+/*        margin: 150px;*/
+/*        text-align: center;*/
+/*    }*/
+/*    }*/
+
+/*    h1 {*/
+
+/*    }*/
+
+/*    nav {*/
+
+/*    }*/

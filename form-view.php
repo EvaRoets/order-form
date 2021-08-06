@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" type="text/css"
           rel="stylesheet"/>
-    <link rel="stylesheet" href="reset.css">
+<!--    <link rel="stylesheet" href="reset.css">-->
     <link rel="stylesheet" href="style.css">
     <title>Useless and priceless things</title>
 </head>
@@ -43,7 +43,7 @@
     <form method="post">
 
         <fieldset>
-            <legend>Products</legend>
+<!--            <legend>Products</legend>-->
             <?php if ($uselessProductsSelected) : ?>
                 <?php foreach ($products1 as $i => $product): ?>
                     <label>
@@ -128,7 +128,7 @@
             </div>
         </fieldset>
 
-        <button type="submit" class="btn btn-primary">Order!</button>
+        <button type="submit" class="btn">Order!</button>
     </form>
 
 </div>
