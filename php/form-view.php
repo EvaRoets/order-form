@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" type="text/css"
           rel="stylesheet"/>
-<!--    <link rel="stylesheet" href="reset.css">-->
+    <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/style.css">
     <title>Useless and priceless things</title>
 </head>
@@ -17,7 +17,6 @@
 
 <div class="container">
     <h1>Place your order</h1>
-
     <?php if (!empty($confirmationMsg)) { ?>
         <div class="<?php if ($confirmationMsg[$invalidFields]) {
             echo 'alert-danger';
@@ -27,7 +26,6 @@
             <?= $confirmationMsg ?>
         </div>
     <?php } ?>
-
     <nav>
         <ul class="nav">
             <li class="nav-item">
@@ -35,15 +33,12 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="..?products2">Priceless things</a>
-
             </li>
         </ul>
     </nav>
-
     <form method="post">
-
         <fieldset>
-<!--            <legend>Products</legend>-->
+            <legend>Products</legend>
             <?php if ($uselessProductsSelected) : ?>
                 <?php foreach ($products1 as $i => $product): ?>
                     <label>
@@ -62,7 +57,6 @@
                 <?php endforeach; ?>
             <?php endif; ?>
         </fieldset>
-
         <fieldset>
             <legend>Address</legend>
             <div class="form-row">
@@ -70,15 +64,13 @@
                     <label for="email">E-mail</label>
                     <input type="email" id="email" name="email" class="form-control"
                            value="<?php
-                           if (isset($_SESSION)) {
+                           if (isset($_SESSION["email"])) {
                                echo $_SESSION["email"];
                            } else {
                                echo "";
                            } ?>"/>
                 </div>
-                <div></div>
             </div>
-
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="street">Street</label>
@@ -90,7 +82,6 @@
                                echo "";
                            } ?>"/>
                 </div>
-
                 <div class="form-group col-md-6">
                     <label for="streetnumber">Street number</label>
                     <input type="text" id="streetnumber" name="streetnumber" class="form-control"
@@ -102,7 +93,6 @@
                            } ?>"/>
                 </div>
             </div>
-
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="city">City</label>
@@ -114,7 +104,6 @@
                                echo "";
                            } ?>"/>
                 </div>
-
                 <div class="form-group col-md-6">
                     <label for="zipcode">Zipcode</label>
                     <input type="text" id="zipcode" name="zipcode" class="form-control"
@@ -126,13 +115,11 @@
                            } ?>"/>
                 </div>
             </div>
-
         </fieldset>
         <div class="divbtn">
-        <button type="submit" class="btn">Order!</button>
+            <button type="submit" class="btn">Order!</button>
         </div>
     </form>
-
 </div>
 </body>
 </html>

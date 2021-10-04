@@ -2,7 +2,7 @@ body {
     display: grid;
     align-items: center;
     justify-content: center;
-    background: url("../images/background.jpg") repeat fixed;
+    background: url("../images/background.jpg") fixed;
     background-size: cover;
 }
 
