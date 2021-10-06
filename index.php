@@ -32,8 +32,8 @@ function whatIsHappening()
     var_dump($_SERVER["REQUEST_URI"]);
     var_dump("</pre>");
 }
-whatIsHappening();
-
+//whatIsHappening();
+//
 // List products
 $products1 = [
     $product1,
