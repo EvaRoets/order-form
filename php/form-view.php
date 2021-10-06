@@ -1,6 +1,6 @@
-<?php ?>
 
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,8 +9,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" type="text/css"
           rel="stylesheet"/>
-    <link rel="stylesheet" href="../css/reset.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
     <title>Useless and priceless things</title>
 </head>
 <body>
@@ -45,7 +45,7 @@
                         <input type="checkbox"
                                value="1"
                                name="products[<?= $i ?>]"/>
-                        <?= $product->name ?> - <?= $product->formattedPrice() ?></label><br/>
+                        <?= $product->name ?> - <?= $product->formattedPrice ?></label><br/>
                 <?php endforeach; ?>
             <?php else : ?>
                 <?php foreach ($products2 as $i => $product): ?>

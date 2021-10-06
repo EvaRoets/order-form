@@ -11,9 +11,8 @@ class Product
         $this->price = $price;
     }
 
-    public function formattedPrice()
+    public function formattedPrice(): string
     {
         return "€" . number_format($this->price, 2);
     }
-
 }

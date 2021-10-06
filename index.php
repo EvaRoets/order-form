@@ -17,23 +17,22 @@ require "php/Order.php";
 require "php/product-list.php";
 
 // Enable overview of these variables
-//function whatIsHappening()
-//{
-//    var_dump("<pre>");
-//    echo '<h2>$_GET</h2>';
-//    var_dump($_GET);
-//    echo '<h2>$_POST</h2>';
-//    var_dump($_POST);
-//    echo '<h2>$_COOKIE</h2>';
-//    var_dump($_COOKIE);
-//    echo '<h2>$_SESSION</h2>';
-//    var_dump($_SESSION);
-//    echo '<h2>$_SERVER</h2>';
-//    var_dump($_SERVER["REQUEST_URI"]);
-//    var_dump("</pre>");
-//}
-//
-//whatIsHappening();
+function whatIsHappening()
+{
+    var_dump("<pre>");
+    echo '<h2>$_GET</h2>';
+    var_dump($_GET);
+    echo '<h2>$_POST</h2>';
+    var_dump($_POST);
+    echo '<h2>$_COOKIE</h2>';
+    var_dump($_COOKIE);
+    echo '<h2>$_SESSION</h2>';
+    var_dump($_SESSION);
+    echo '<h2>$_SERVER</h2>';
+    var_dump($_SERVER["REQUEST_URI"]);
+    var_dump("</pre>");
+}
+whatIsHappening();
 
 // List products
 $products1 = [
@@ -54,8 +53,6 @@ $products2 = [
 
 $totalValue = 0;
 
-// TODO: remove commented if
-//if (basename($_SERVER['REQUEST_URI']) == "/the-mountain/order-form/") || basename($_SERVER['REQUEST_URI']) == "/the-mountain/order-form/?products1") {
 if (isset($_GET['products1'])) {
     $uselessProductsSelected = true;
     $products = $products1;
@@ -65,7 +62,7 @@ if (isset($_GET['products1'])) {
 }
 
 // Validate submitted field values
-function validate()
+function validate(): array
 {
     // Create and return invalid fields array
     $invalidFields = [];
@@ -108,23 +105,23 @@ function handleForm($products, &$totalValue)
             $errorMsg .= "<br>";
         }
         if (in_array("street", $invalidFields)) {
-            $errorMsg .= "Please fill out your street.";
+            $errorMsg = "Please fill out your street.";
             $errorMsg .= "<br>";
         }
         if (in_array("streetnumber", $invalidFields)) {
-            $errorMsg .= "Please fill out your street number.";
+            $errorMsg = "Please fill out your street number.";
             $errorMsg .= "<br>";
         }
         if (in_array("city", $invalidFields)) {
-            $errorMsg .= "Please fill out your city.";
+            $errorMsg = "Please fill out your city.";
             $errorMsg .= "<br>";
         }
         if (in_array("zipcode", $invalidFields)) {
-            $errorMsg .= "Please fill out your zip code.";
+            $errorMsg = "Please fill out your zip code.";
             $errorMsg .= "<br>";
         } // Check if zip code consists of only numbers
         elseif (in_array("zipcodeInvalid", $invalidFields)) {
-            $errorMsg .= "Zip code can only have numeric values.";
+            $errorMsg = "Zip code can only have numeric values.";
         }
         // Display any empty or invalid data with corresponding error message
         return [
@@ -132,7 +129,7 @@ function handleForm($products, &$totalValue)
             "message" => "<div class='alert alert-danger'>" . $errorMsg . "</div>",
         ];
 
-    } elseif (empty($invalidFields)) {
+    } else{
         // Loop through product arrays
         $productNumbers = array_keys($_POST["products"]);
         $orderedProducts = [];
@@ -156,7 +153,6 @@ function handleForm($products, &$totalValue)
             "message" => "<div class='alert alert-success'>" . $order->confirmationMsg() . "</div>",
         ];
     }
-
 }
 
 // Check if form is not empty when submitted

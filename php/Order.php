@@ -19,32 +19,32 @@ class Order
         $this->products = $products;
     }
 
-    public function getEmail(): string
+    public function getEmail()
     {
         return $this->email;
     }
 
-    public function getStreet(): string
+    public function getStreet()
     {
         return $this->street;
     }
 
-    public function getStreetNumber(): int|string
+    public function getStreetNumber()
     {
         return $this->streetNumber;
     }
 
-    public function getZipCode(): int|string
+    public function getZipCode()
     {
         return $this->zipcode;
     }
 
-    public function getCity(): string
+    public function getCity()
     {
         return $this->city;
     }
 
-    public function confirmationMsg(): string
+    public function confirmationMsg()
     {
         $productNames = [];
         foreach ($this->products as $product) {
