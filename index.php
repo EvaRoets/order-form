@@ -17,21 +17,22 @@ require "php/Order.php";
 require "php/product-list.php";
 
 // Enable overview of these variables
-function whatIsHappening()
-{
-    var_dump("<pre>");
-    echo '<h2>$_GET</h2>';
-    var_dump($_GET);
-    echo '<h2>$_POST</h2>';
-    var_dump($_POST);
-    echo '<h2>$_COOKIE</h2>';
-    var_dump($_COOKIE);
-    echo '<h2>$_SESSION</h2>';
-    var_dump($_SESSION);
-    echo '<h2>$_SERVER</h2>';
-    var_dump($_SERVER["REQUEST_URI"]);
-    var_dump("</pre>");
-}
+//function whatIsHappening()
+//{
+//    var_dump("<pre>");
+//    echo '<h2>$_GET</h2>';
+//    var_dump($_GET);
+//    echo '<h2>$_POST</h2>';
+//    var_dump($_POST);
+//    echo '<h2>$_COOKIE</h2>';
+//    var_dump($_COOKIE);
+//    echo '<h2>$_SESSION</h2>';
+//    var_dump($_SESSION);
+//    echo '<h2>$_SERVER</h2>';
+//    var_dump($_SERVER["REQUEST_URI"]);
+//    var_dump("</pre>");
+//}
+
 //whatIsHappening();
 //
 // List products
@@ -90,7 +91,7 @@ function validate(): array
     return $invalidFields;
 }
 
-function handleForm($products, &$totalValue)
+function handleForm($products, &$totalValue): array
 {
     // Validation (return invalidly submitted fields)
     $invalidFields = validate();
@@ -129,7 +130,7 @@ function handleForm($products, &$totalValue)
             "message" => "<div class='alert alert-danger'>" . $errorMsg . "</div>",
         ];
 
-    } else{
+    } else {
         // Loop through product arrays
         $productNumbers = array_keys($_POST["products"]);
         $orderedProducts = [];
